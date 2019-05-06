@@ -1,0 +1,2 @@
+class Voca < ApplicationRecord
+end

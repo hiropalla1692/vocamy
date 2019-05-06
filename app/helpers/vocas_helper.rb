@@ -1,0 +1,2 @@
+module VocasHelper
+end

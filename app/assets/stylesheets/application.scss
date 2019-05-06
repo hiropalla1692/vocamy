@@ -1,0 +1,90 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ $color-main: #c9c3cc;
+ $color-sub: #605663;
+
+body {
+  margin: 0;
+  background-color: #fbf8fc
+}
+/* HEADER */
+.header-container {
+
+}
+
+ /* TOPBAR */
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height:48px;
+  align-items: center;
+  font-family: 'Baloo', cursive;
+  background-color: $color-main;
+
+  .search {
+    flex-basis: 20%;
+  }
+  .logo_container {
+    flex-basis: 60%;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+      a, a:visited {
+        color: black;
+        text-decoration: none;
+      }
+  }
+  .menu_container {
+    display: flex;
+    flex-basis: 20%;
+    ul {
+      color: $color-sub;
+      font-size: 14px
+    }
+  }
+}
+
+/* NAVBAR */
+.navbar{
+  height:36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Baloo', cursive;
+  background-color: $color-sub;
+
+  .navbar_menu {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+  a, a:visited {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: #edeb7a;
+    }
+
+  }
+}
+
+ /* FORM */
+.form_all{
+  background-color: yellow;
+}
