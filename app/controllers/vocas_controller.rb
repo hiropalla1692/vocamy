@@ -5,8 +5,12 @@ class VocasController < ApplicationController
   end
 
   def create
-    @voca = Voca.create(voca_params)
-    @vocas = Voca.order(:name)
+    @voca = Voca.new(voca_params)
+    if @voca.save
+      render json: @voca
+    else
+      render json: @voca.errors, status: :unprocessable_entity
+    end
   end
 
   def show

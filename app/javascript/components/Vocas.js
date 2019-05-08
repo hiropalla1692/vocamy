@@ -17,6 +17,7 @@ class Vocas extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.addNewVoca = this.addNewVoca.bind(this);
   }
 
   handleChange(e) {
@@ -29,12 +30,22 @@ class Vocas extends React.Component {
         input_japanese: e.target.value
       })
     }
-  };
+  }
   
   handleFormSubmit() {
     var voca = {name: this.state.input_name, japanese: this.state.input_japanese}
-    $.post('/vocas',{voca: voca});
-  };
+    $.post('/vocas',{voca: voca})
+      .done((data) => {
+        this.addNewVoca(data);
+      });
+  }
+
+  addNewVoca (voca) {
+    var vocas = this.state.vocas.push(voca);
+    this.setState({
+      vocas: vocas.sort
+        });
+  }
   
   render() {
     var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
@@ -58,6 +69,7 @@ class Vocas extends React.Component {
               if (voca.name[0] === i) {
                 return (
                   <EachVoca
+                  key = {voca.id}
                   name = {voca.name}
                   japanese = {voca.japanese}
                 />
