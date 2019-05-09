@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components'
 
-const Alphabet = styled.span`
+const Alphabet = styled.button`
   background-color: trnasparent;
   color: palevioletred;
   text-align: center;
