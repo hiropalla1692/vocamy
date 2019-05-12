@@ -14,12 +14,13 @@
  *= require_self
  */
 
- $color-main: #c9c3cc;
- $color-sub: #605663;
+ $color-main: #311B3A;
+ $color-sub: #A79EAC;
+ $color-word: #444A57;
 
 body {
   margin: 0;
-  background-color: #fbf8fc
+  background-color: #FFFFFF
 }
 /* HEADER */
 .header-container {
@@ -45,7 +46,7 @@ body {
     font-family: 'Pacifico', cursive;
     font-size: 24px;
       a, a:visited {
-        color: black;
+        color: white;
         text-decoration: none;
       }
   }
@@ -53,7 +54,7 @@ body {
     display: flex;
     flex-basis: 20%;
     ul {
-      color: $color-sub;
+      color: white;
       font-size: 14px
     }
   }
@@ -86,5 +87,4 @@ body {
 
  /* FORM */
 .form_all{
-  background-color: yellow;
 }

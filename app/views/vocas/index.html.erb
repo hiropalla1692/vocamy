@@ -1,16 +1,4 @@
-<div class="form_all">
-  <%= form_with model:@voca do |f| %>
-  <div class="form_set">
-    <%= f.label :name, class: 'form_label'%>
-    <%= f.text_field :name, class: 'form_box' %>
-  </div>
-  <div class="form_set">
-  <%= f.label :japanese, class: 'form_label' %>
-  <%= f.text_field :japanese, class: 'form_box' %>
-  </div>
-  <%= f.submit 'Add', :class=>"btn" %>
-  <% end %>
-</div>
+
 
 
 <%= react_component('Vocas', {vocas: @vocas}) %>
