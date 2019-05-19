@@ -13,6 +13,7 @@ const Name = styled.span`
   text-align: left;
   font-size: 18px
   font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
     a {
       color: black;
       text-decoration: none;

@@ -14,7 +14,7 @@ class Vocas extends React.Component {
       vocas: this.props.vocas,
       text: null,
       input_name: '',
-      input_japanese: ''
+      input_japanese: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
