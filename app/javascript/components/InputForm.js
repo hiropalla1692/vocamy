@@ -1,7 +1,8 @@
 import React from 'react';
+import Lyrics from './Lyrics'
 import styled, {css} from 'styled-components';
 import lincoln from './img/lincoln.jpg';
-import Lyrics from './Lyrics'
+
 
 const Container = styled.div`
   display: flex;
@@ -10,6 +11,10 @@ const Container = styled.div`
   background-position: center 69%; 
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
+
+  ${props => props.lyrics && css`
+    background-image: none;
+  `};
 `
 
 const LyricsForm = styled.div`
@@ -105,44 +110,46 @@ class InputForm extends React.Component {
     const { active } = this.state;
     const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
-          <Container>
-            <LyricsForm>
+          <React.Fragment>
+            <Container lyrics>
               <Lyrics/>
-            </LyricsForm>
-            <form onSubmit={(e)=>this.handleSubmit(e)} autocomplete="off">
-            <StyledForm>
-              <ul>
-                <Label className={FocusIs}>&nbsp;&nbsp;&nbsp;Name</Label>
-                <Input className={FocusIs}
-                  name='name' 
-                  placeholder='Name' 
-                  value={this.props.input_name} 
-                  onChange={this.props.onChange}
-                  onFocus={() => this.setState({ active: true })}
-                  onBlur={() => this.setState({ active: false })}
+            </Container>
+            <Container>
+              <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
+              <StyledForm>
+                <ul>
+                  <Label className={FocusIs}>&nbsp;&nbsp;&nbsp;Name</Label>
+                  <Input className={FocusIs}
+                    name='name' 
+                    placeholder='Name' 
+                    value={this.props.input_name} 
+                    onChange={this.props.onChange}
+                    onFocus={() => this.setState({ active: true })}
+                    onBlur={() => this.setState({ active: false })}
+                  ></Input>
+                </ul>
+                <ul>
+                  <Label className={FocusIs}>Japanese</Label>
+                  <Input className={FocusIs}
+                    name='japanese' 
+                    placeholder='Japanese' 
+                    value={this.props.input_japanese} 
+                    onChange={this.props.onChange}
+                    onFocus={() => this.setState({ active: true })}
+                    onBlur={() => this.setState({ active: false })}
+                  ></Input>
+                </ul>
+                <ul>
+                <Label></Label>
+                <Input push 
+                  type='submit' 
+                  value='+&nbsp;&nbsp;&nbsp;PLUS&nbsp;🥑'
                 ></Input>
-              </ul>
-              <ul>
-                <Label className={FocusIs}>Japanese</Label>
-                <Input className={FocusIs}
-                  name='japanese' 
-                  placeholder='Japanese' 
-                  value={this.props.input_japanese} 
-                  onChange={this.props.onChange}
-                  onFocus={() => this.setState({ active: true })}
-                  onBlur={() => this.setState({ active: false })}
-                ></Input>
-              </ul>
-              <ul>
-              <Label></Label>
-              <Input push 
-                type='submit' 
-                value='+&nbsp;&nbsp;&nbsp;PLUS&nbsp;🥑'
-              ></Input>
-              </ul>
-            </StyledForm>
-            </form>
-          </Container>
+                </ul>
+              </StyledForm>
+              </form>
+            </Container>
+          </React.Fragment>
     );
   }
 }

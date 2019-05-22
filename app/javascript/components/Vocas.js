@@ -3,6 +3,8 @@ import React from 'react'
 import InputForm from './InputForm'
 import AlphabetBox from './AlphabetBox'
 import EachVoca from './EachVoca'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Provider } from '../context';
 import update from 'immutability-helper';
 
 
@@ -57,35 +59,39 @@ class Vocas extends React.Component {
   render() {
     var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     return (
-      <div>
-        <div>
-          <InputForm
-            input_name = {this.state.input_name}
-            input_japanese = {this.state.input_japanese}
-            onChange = {this.handleChange}
-            onFormSubmit = {this.handleFormSubmit}
-          />
-        </div>
-        {alphabets.map((i) => {
-          return (
+      <Provider>
+        <Router>
+          <div>
             <div>
-            <AlphabetBox
-              alp = {i.toUpperCase()}
-            />
-            {this.state.vocas.map ((voca) => {
-              if (voca.name[0] === i) {
-                return (
-                  <EachVoca
-                  key = {voca.id}
-                  name = {voca.name}
-                  japanese = {voca.japanese}
-                />
-                );
-              }
-            })}
+              <InputForm
+                input_name = {this.state.input_name}
+                input_japanese = {this.state.input_japanese}
+                onChange = {this.handleChange}
+                onFormSubmit = {this.handleFormSubmit}
+              />
             </div>
-          );})}
-      </div>
+            {alphabets.map((i) => {
+              return (
+                <div>
+                <AlphabetBox
+                  alp = {i.toUpperCase()}
+                />
+                {this.state.vocas.map ((voca) => {
+                  if (voca.name[0] === i) {
+                    return (
+                      <EachVoca
+                      key = {voca.id}
+                      name = {voca.name}
+                      japanese = {voca.japanese}
+                    />
+                    );
+                  }
+                })}
+                </div>
+              );})}
+          </div>
+        </Router>
+      </Provider>
     );}
   }
 
