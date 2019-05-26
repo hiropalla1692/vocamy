@@ -1,5 +1,6 @@
 import React from 'react';
 import Lyrics from './Lyrics'
+import Search from './Search';
 import styled, {css} from 'styled-components';
 import lincoln from './img/lincoln.jpg';
 
@@ -113,6 +114,7 @@ class InputForm extends React.Component {
           <React.Fragment>
             <Container lyrics>
               <Lyrics/>
+              <Search/>
             </Container>
             <Container>
               <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
