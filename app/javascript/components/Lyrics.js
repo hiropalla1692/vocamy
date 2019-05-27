@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  height: 560px;
+  height: 280px;
   font-family: 'Source Sans Pro', sans-serif;
 `
 
@@ -19,8 +19,8 @@ class Lyrics extends React.Component {
               return <h1>...loading</h1>
             } else {
               return (
-                <React.Fragment>
-                  <h3>{heading}</h3>
+                <div>
+                  <h2>{heading}</h2>
                   <div>
                     {track_list.map(item => (
                       <Track 
@@ -29,7 +29,7 @@ class Lyrics extends React.Component {
                       />
                     ))}
                   </div>
-                </React.Fragment>
+                </div>
               );
             }
           }}

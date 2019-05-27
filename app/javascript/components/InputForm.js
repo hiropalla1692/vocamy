@@ -7,7 +7,9 @@ import lincoln from './img/lincoln.jpg';
 
 const Container = styled.div`
   display: flex;
-  height: 280px;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 560px;
   background-image: url(${lincoln});
   background-position: center 69%; 
   background-size: cover;
@@ -113,8 +115,8 @@ class InputForm extends React.Component {
     return (
           <React.Fragment>
             <Container lyrics>
-              <Lyrics/>
               <Search/>
+              <Lyrics/>
             </Container>
             <Container>
               <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">

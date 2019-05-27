@@ -1,4 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const TrackInformation = styled.div`
+  font-family: 'Baloo', cursive;
+  background-color: pink;
+  width: 400px
+`
 
 const Track = (props) => {
   const { track } = props;
@@ -6,14 +13,14 @@ const Track = (props) => {
   return (
     <div>
       <div>
-        <div>
-          <h5>{track.artist_name}</h5>
+        <TrackInformation>
+          <h3>{track.track_name}</h3>
           <p>
-            <strong><i></i> Track</strong>: {track.track_name}
+            <strong>Artist</strong>: {track.artist_name}
             <br/>
-            <strong><i></i> Album</strong>: {track.album_name}
+            <strong>Album</strong>: {track.album_name}
           </p>
-        </div>
+        </TrackInformation>
       </div>
     </div>
   )
