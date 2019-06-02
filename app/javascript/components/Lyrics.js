@@ -1,6 +1,7 @@
 import React from 'react';
 import { Consumer } from '../context';
 import Track from './Track';
+import Spinner from './Spinner';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -16,7 +17,7 @@ class Lyrics extends React.Component {
           {value => {
             const { track_list, heading } = value;
             if(track_list === undefined || track_list.length === 0) {
-              return <h1>...loading</h1>
+              return <Spinner/>
             } else {
               return (
                 <div>

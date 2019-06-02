@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Spinner from './Spinner';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -32,7 +33,7 @@ class LyricsContent extends Component {
       Object.keys(track).length === 0 ||
       Object.keys(lyrics).length === 0
     ) {
-      return <h1>...loading</h1>
+      return <Spinner/>
     } else {
       return (
         <React.Fragment>
