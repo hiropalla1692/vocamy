@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import styled from 'styled-components';
 
 const TrackInformation = styled.div`
   font-family: 'Baloo', cursive;
   background-color: pink;
-  width: 400px
+  width: 400px;
 `
 
 const Track = (props) => {
@@ -20,6 +21,9 @@ const Track = (props) => {
             <br/>
             <strong>Album</strong>: {track.album_name}
           </p>
+          <Link to={`lyrics/track/${track.track_id}`}>
+            View Lyrics
+          </Link>
         </TrackInformation>
       </div>
     </div>

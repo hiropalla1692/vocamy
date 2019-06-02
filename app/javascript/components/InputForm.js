@@ -1,7 +1,9 @@
 import React from 'react';
-import Lyrics from './Lyrics'
+import Lyrics from './Lyrics';
+import LyricsContent from './LyricsContent';
 import Search from './Search';
 import styled, {css} from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import lincoln from './img/lincoln.jpg';
 
 
@@ -115,8 +117,13 @@ class InputForm extends React.Component {
     return (
           <React.Fragment>
             <Container lyrics>
+            <Router>
               <Search/>
-              <Lyrics/>
+                <Switch>
+                  <Route exact path="/" component={Lyrics} />
+                  <Route exact path="/lyrics/track/:id" component={LyricsContent} />
+                </Switch>
+            </Router>
             </Container>
             <Container>
               <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">

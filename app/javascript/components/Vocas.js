@@ -3,7 +3,6 @@ import React from 'react'
 import InputForm from './InputForm'
 import AlphabetBox from './AlphabetBox'
 import EachVoca from './EachVoca'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from '../context';
 import update from 'immutability-helper';
 
@@ -37,8 +36,7 @@ class Vocas extends React.Component {
   
   handleFormSubmit() {
     var voca = {name: this.state.input_name, japanese: this.state.input_japanese}
-    console.log(voca)
-    $.post('/vocas',{voca: voca})
+    $.post('/voca',{voca: voca})
       .done((data) => {
         this.addNewVoca(data);
       });
@@ -46,6 +44,7 @@ class Vocas extends React.Component {
 
   addNewVoca (voca) {
     var vocas = update(this.state.vocas, {$push: [voca]})
+    console.log(vocas);
     this.setState({
       vocas: vocas.sort((a,b) => {
         if (a.name < b.name) return -1;
@@ -53,14 +52,12 @@ class Vocas extends React.Component {
         return 0;
       })
         });
-      console.log(vocas);
   }
   
   render() {
     var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     return (
       <Provider>
-        <Router>
           <div>
             <div>
               <InputForm
@@ -90,7 +87,6 @@ class Vocas extends React.Component {
                 </div>
               );})}
           </div>
-        </Router>
       </Provider>
     );}
   }
