@@ -19,6 +19,7 @@ const Container = styled.div`
 
   ${props => props.lyrics && css`
     background-image: none;
+    font-family: 'Baloo', cursive;
   `};
 `
 
@@ -117,13 +118,17 @@ class InputForm extends React.Component {
     return (
           <React.Fragment>
             <Container lyrics>
-            <Router>
-              <Search/>
-                <Switch>
-                  <Route exact path="/" component={Lyrics} />
-                  <Route exact path="/lyrics/track/:id" component={LyricsContent} />
-                </Switch>
-            </Router>
+              <Router>
+                <StyledForm>  
+                  <Search/>
+                </StyledForm>  
+                <StyledForm>  
+                  <Switch>
+                    <Route exact path="/" component={Lyrics} />
+                    <Route exact path="/lyrics/track/:id" component={LyricsContent} />
+                  </Switch>
+                </StyledForm>  
+              </Router>
             </Container>
             <Container>
               <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">

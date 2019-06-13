@@ -36,7 +36,7 @@ class Vocas extends React.Component {
   
   handleFormSubmit() {
     var voca = {name: this.state.input_name, japanese: this.state.input_japanese}
-    $.post('/voca',{voca: voca})
+    $.post('/vocas',{voca: voca})
       .done((data) => {
         this.addNewVoca(data);
       });
@@ -44,7 +44,7 @@ class Vocas extends React.Component {
 
   addNewVoca (voca) {
     var vocas = update(this.state.vocas, {$push: [voca]})
-    console.log(vocas);
+    //console.log(vocas);
     this.setState({
       vocas: vocas.sort((a,b) => {
         if (a.name < b.name) return -1;
