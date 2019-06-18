@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import Spinner from './Spinner';
 import axios from 'axios';
+import styled, {css} from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const Title = styled.h1`
+  color: white;
+  background-color: violet;
+`
 
 
 class LyricsContent extends Component {
@@ -49,17 +54,17 @@ class LyricsContent extends Component {
         <React.Fragment>
           <Link to="/">Go Back</Link>
           <div>
+            <Title>
+              {track.track_name} <br></br>by <span>{track.artist_name}</span>
+            </Title>
             <h4>
-              {track.track_name} by <span>{track.artist_name}</span>
-            </h4>
-            <div>
               {lyricsSentense.map((value) => {
                 var tmp_array = value.split(' ');
                 lyricsBox.push(tmp_array);
                 return <a>{value}<br></br></a>
               })}
               {console.log(lyricsBox)}
-            </div>
+            </h4>
           </div>
         </React.Fragment>
       )

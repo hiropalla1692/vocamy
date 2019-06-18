@@ -18,8 +18,8 @@ const Container = styled.div`
   font-family: 'Source Sans Pro', sans-serif;
 
   ${props => props.lyrics && css`
+    height: 880px;
     background-image: none;
-    font-family: 'Baloo', cursive;
   `};
 `
 

@@ -15,7 +15,9 @@
       <%= render 'vocamy/shared/topbar' %>
       <%= render 'vocamy/shared/navbar' %>
       </div>
-    <%= yield %>
+      <div class="content">
+        <%= yield %>
+      </div>
     <%= render 'vocamy/shared/footer' %>
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

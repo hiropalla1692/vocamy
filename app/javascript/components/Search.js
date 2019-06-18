@@ -34,7 +34,7 @@ class Search extends Component {
           return (
             <div>
               <h1>Search For A Song</h1>
-              <p>Get the lyrics for any song</p>
+              <p>Add New Voca from any lyrics</p>
               <form onSubmit={this.findTrack.bind(this,dispatch)} autoComplete="off">
                 <div>
                   <input 

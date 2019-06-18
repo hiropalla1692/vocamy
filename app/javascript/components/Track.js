@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const TrackInformation = styled.div`
-  font-family: 'Baloo', cursive;
+  font-family: 'Source Sans Pro', sans-serif;
   background-color: pink;
   width: 400px;
 `
@@ -22,7 +22,7 @@ const Track = (props) => {
             <strong>Album</strong>: {track.album_name}
           </p>
           <Link to={`lyrics/track/${track.track_id}`}>
-            View Lyrics
+            >>View Lyrics
           </Link>
         </TrackInformation>
       </div>
