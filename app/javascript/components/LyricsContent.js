@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 
 const Title = styled.h1`
   color: white;
-  background-color: violet;
+  border-radius: 2px;
+  padding: 1rem 1rem;
+  background-color: black;
 `
 
 
@@ -55,7 +57,7 @@ class LyricsContent extends Component {
           <Link to="/">Go Back</Link>
           <div>
             <Title>
-              {track.track_name} <br></br>by <span>{track.artist_name}</span>
+              {track.track_name} <br></br><small>by</small> <span>{track.artist_name}</span>
             </Title>
             <h4>
               {lyricsSentense.map((value) => {

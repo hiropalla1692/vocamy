@@ -9,6 +9,10 @@ const Container = styled.div`
   height: 280px;
   font-family: 'Source Sans Pro', sans-serif;
 `
+const TrackBox = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`
 
 class Lyrics extends React.Component {
   render () {
@@ -21,15 +25,15 @@ class Lyrics extends React.Component {
             } else {
               return (
                 <div>
-                  <h2>{heading}</h2>
-                  <div>
+                  <h1>{heading}</h1>
+                  <TrackBox>
                     {track_list.map(item => (
                       <Track 
                         key={item.track.track_id}
                         track={item.track}
                       />
                     ))}
-                  </div>
+                  </TrackBox>
                 </div>
               );
             }
