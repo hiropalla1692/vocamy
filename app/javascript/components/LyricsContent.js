@@ -11,6 +11,14 @@ const Title = styled.h1`
   background-color: black;
 `
 
+const SingleWord = styled.a`
+  text-decoration: none;
+  color: black;
+    :hover {
+      color: #9ca5eb;
+    }
+`
+
 
 class LyricsContent extends Component {
   state = {
@@ -47,26 +55,31 @@ class LyricsContent extends Component {
       return <Spinner/>
     } else {
         var lyricsSentense = lyrics.lyrics_body.split(/\r?\n/)
-        //console.log(typeof lyricsSentense);
-        //console.log(lyricsSentense);
         var lyricsBox = [];
-        //var lyricsWord = lyricsSentense.split(' ');
-        //console.log(lyricsWord);
+        lyricsSentense.map((value) => {
+          var tmp_array = value.split(' ');
+          lyricsBox.push(tmp_array)
+        })
       return (
         <React.Fragment>
           <Link to="/">Go Back</Link>
           <div>
             <Title>
-              {track.track_name} <br></br><small>by</small> <span>{track.artist_name}</span>
+              {track.track_name} <br></br><small>by <span>{track.artist_name}</span></small> 
             </Title>
             <h4>
-              {lyricsSentense.map((value) => {
-                var tmp_array = value.split(' ');
-                lyricsBox.push(tmp_array);
-                return <a>{value}<br></br></a>
+              {lyricsBox.map((value) => {
+                 var word = value.map( (each) => {
+                   if (each === value[(value.length)-1]) {
+                    return <SingleWord href="">{each}<br></br></SingleWord>
+                   } else {
+                    return <SingleWord href="">{each}&nbsp;</SingleWord>
+                   }
+                 })
+                 return word
               })}
-              {console.log(lyricsBox)}
             </h4>
+            {console.log(lyricsBox)}
           </div>
         </React.Fragment>
       )

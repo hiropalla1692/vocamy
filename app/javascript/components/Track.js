@@ -11,7 +11,7 @@ const Button = styled.a`
   border-radius: 3px;
   padding: 0.5rem 0;
   margin: 0.5rem 0;
-  width: 6rem;
+  width: 8rem;
   background: transparent;
   color: white;
   border: 2px solid white;
@@ -40,7 +40,7 @@ const Track = (props) => {
         <strong>Album</strong>: {track.album_name}
       </p>
       <Link to={`lyrics/track/${track.track_id}`}>
-        <Button>&nbsp;>>View Lyrics</Button>
+        <Button>&nbsp;&nbsp;>>View Lyrics 👑</Button>
       </Link>
     </TrackInformation>
   )
