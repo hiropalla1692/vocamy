@@ -1,11 +1,5 @@
 import React from 'react';
-import Lyrics from './Lyrics';
-import AddVoca from './AddVoca';
-import LyricsContent from './LyricsContent';
-import Search from './Search';
 import styled, {css} from 'styled-components';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import lincoln from './img/lincoln.jpg';
 
 
 const Container = styled.div`
@@ -13,7 +7,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-around;
   height: 560px;
-  background-image: url(${lincoln});
+  background-color: gray;
   background-position: center 69%; 
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
@@ -22,10 +16,6 @@ const Container = styled.div`
     height: 880px;
     background-image: none;
   `};
-`
-
-const LyricsForm = styled.div`
-  flex: 0 0 50%;
 `
 const StyledForm = styled.div`
   display: flex;
@@ -99,14 +89,13 @@ const Label = styled.label`
   }
 `
 
-class InputForm extends React.Component {
+class AddVoca extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       active: false,
-    };
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
   }
 
   handleSubmit(e) {
@@ -114,33 +103,11 @@ class InputForm extends React.Component {
     this.props.onFormSubmit();
   };
 
-  handleFormSubmit() {
-    this.props.onFormSubmit();
-  };
-
-
   render () {
     const { active } = this.state;
     const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
-            <Container lyrics>
-              <Router>
-                <StyledForm>  
-                  <Search/>
-                  <AddVoca
-                    onFormSubmit = {this.handleFormSubmit}
-                    onChange = {this.props.onChange}
-                  />
-                </StyledForm>  
-                <StyledForm>  
-                  <Switch>
-                    <Route exact path="/" component={Lyrics} />
-                    <Route exact path="/lyrics/track/:id" component={LyricsContent} />
-                  </Switch>
-                </StyledForm>  
-              </Router>
-            </Container>
             <Container>
               <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
               <StyledForm>
@@ -181,5 +148,4 @@ class InputForm extends React.Component {
   }
 }
 
-export default InputForm;
-
+export default AddVoca;
