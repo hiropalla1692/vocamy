@@ -6,12 +6,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  height: 280px;
-  font-family: 'Source Sans Pro', sans-serif;
-`
-const TrackBox = styled.div`
-  display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
 `
 
 class Lyrics extends React.Component {
@@ -26,14 +22,16 @@ class Lyrics extends React.Component {
               return (
                 <div>
                   <h1>{heading}</h1>
-                  <TrackBox>
-                    {track_list.map(item => (
+                  <h4 style={{ color: "#ff1464" }}>Check out lyrics</h4>
+                  <Container>
+                    {track_list.map( (item, index) => (
                       <Track 
-                        key={item.track.track_id}
-                        track={item.track}
+                      key={item.track.track_id}
+                      track={item.track}
+                      ranking={index + 1}
                       />
                     ))}
-                  </TrackBox>
+                  </Container>
                 </div>
               );
             }

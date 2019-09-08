@@ -1,10 +1,15 @@
-
 import React from 'react'
+import styled, {css} from 'styled-components';
 import InputForm from './InputForm'
 import AlphabetBox from './AlphabetBox'
 import EachVoca from './EachVoca'
 import { Provider } from '../context';
 import update from 'immutability-helper';
+
+const Container = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+`
 
 
 
@@ -20,6 +25,7 @@ class Vocas extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.addNewVoca = this.addNewVoca.bind(this);
+    this.fillInWord = this.fillInWord.bind(this);
   }
 
   handleChange(e) {
@@ -53,40 +59,50 @@ class Vocas extends React.Component {
       })
         });
   }
+
+  fillInWord (e) {
+    console.log(e);
+    this.setState({
+      input_name: e
+    });
+  }
   
   render() {
     var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     return (
       <Provider>
+        <Container>
           <div>
-            <div>
-              <InputForm
-                input_name = {this.state.input_name}
-                input_japanese = {this.state.input_japanese}
-                onChange = {this.handleChange}
-                onFormSubmit = {this.handleFormSubmit}
-              />
-            </div>
-            {alphabets.map((i) => {
-              return (
-                <div>
-                <AlphabetBox
-                  alp = {i.toUpperCase()}
-                />
-                {this.state.vocas.map ((voca) => {
-                  if (voca.name[0] === i) {
-                    return (
-                      <EachVoca
-                      key = {voca.id}
-                      name = {voca.name}
-                      japanese = {voca.japanese}
-                    />
-                    );
-                  }
-                })}
-                </div>
-              );})}
+            <InputForm
+            input_name = {this.state.input_name}
+            input_japanese = {this.state.input_japanese}
+            onChange = {this.handleChange}
+            fillInWord = {this.fillInWord}
+            onFormSubmit = {this.handleFormSubmit}
+            />
           </div>
+          <div>
+          {alphabets.map((i) => {
+            return (
+              <div>
+              <AlphabetBox
+                alp = {i.toUpperCase()}
+              />
+              {this.state.vocas.map ((voca) => {
+                if (voca.name[0] === i) {
+                  return (
+                    <EachVoca
+                    key = {voca.id}
+                    name = {voca.name}
+                    japanese = {voca.japanese}
+                  />
+                  );
+                }
+              })}
+              </div>
+            );})}
+          </div>
+        </Container>
       </Provider>
     );}
   }

@@ -11,7 +11,7 @@ const Title = styled.h1`
   background-color: black;
 `
 
-const SingleWord = styled.a`
+const SingleWord = styled.span`
   text-decoration: none;
   color: black;
     :hover {
@@ -20,19 +20,27 @@ const SingleWord = styled.a`
 `
 
 
-class LyricsContent extends Component {
-  state = {
-    track: {},
-    lyrics: {}
-  };
+class LyricsContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      track: {},
+      lyrics: {}
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick (e) {
+    console.log(e.target.title);
+    this.props.fillInWord(e.target.title);
+    document.getElementById( "name" ).value = e.target.title.toLowerCase();
+  }
 
   componentDidMount() {
     axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`)
       .then(res => {
         //console.log(res.data)
         this.setState({ lyrics: res.data.message.body.lyrics });
-
         return axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`);
       })
       .then(res => {
@@ -43,9 +51,10 @@ class LyricsContent extends Component {
   }
 
   
+
+  
   render() {
     const { track, lyrics } = this.state;
-
     if(
       track === undefined || 
       lyrics === undefined || 
@@ -71,9 +80,9 @@ class LyricsContent extends Component {
               {lyricsBox.map((value) => {
                  var word = value.map( (each) => {
                    if (each === value[(value.length)-1]) {
-                    return <SingleWord href="">{each}<br></br></SingleWord>
+                    return <SingleWord title={each} onClick={this.handleClick}>{each}<br></br></SingleWord>
                    } else {
-                    return <SingleWord href="">{each}&nbsp;</SingleWord>
+                    return <SingleWord title={each} onClick={this.handleClick}>{each}&nbsp;</SingleWord>
                    }
                  })
                  return word

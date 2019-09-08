@@ -4,11 +4,11 @@ import styled, {css} from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 560px;
-  background-color: gray;
-  background-position: center 69%; 
+  flex-direction: column;
+  border-radius: 1px;
+  padding: 8px;
+  border: solid yellow;
+  background: #ffff70;
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
 
@@ -28,8 +28,8 @@ ul {
   align-items: center;
 }
 ul > label {
-  flex: 1 0 70px;
-  max-width: 70px;
+  flex: 1 0 20px;
+  max-width: 20px;
   font-family: 'Baloo', cursive;
 }
 ul > label + * {
@@ -45,20 +45,15 @@ const Input = styled.input`
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid #white;
+  border-bottom: 1px solid ;
   padding: 10px;
   outline: none;
   transition: 0.3s all;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; 
-  color: white;
   font-size: 20px;
   font-family: 'Source Sans Pro', sans-serif;
-
-  ::placeholder{
-    color: white;
-  }
 
   &.focus{
     ::placeholder{
@@ -71,7 +66,6 @@ const Input = styled.input`
   ${props => props.push && css`
     border-radius: 5px;
     background: palevioletred;
-    color: white;
     border: 2px solid palevioletred;
     font-family: 'Baloo', cursive;
     font-size: 22px;
@@ -80,13 +74,23 @@ const Input = styled.input`
 
 const Label = styled.label`
   visibility:hidden;
+
   font-size: 14px;
 
   &.focus{
     visibility:visible;
-    color: white;
     transition: 0.3s all ease-in-out;
   }
+`
+
+const Button = styled.input`
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+  width: 8rem;
+  background: transparent;
+  border: 1px solid;
 `
 
 class AddVoca extends React.Component {
@@ -103,17 +107,20 @@ class AddVoca extends React.Component {
     this.props.onFormSubmit();
   };
 
+
   render () {
     const { active } = this.state;
     const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
             <Container>
-              <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
+            <h1>Let's Add New Voca💸</h1>
+            <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
               <StyledForm>
                 <ul>
-                  <Label className={FocusIs}>&nbsp;&nbsp;&nbsp;Name</Label>
+                  <Label className={FocusIs}>Name</Label>
                   <Input className={FocusIs}
+                    id = 'name'
                     name='name' 
                     placeholder='Name' 
                     value={this.props.input_name} 
@@ -135,10 +142,10 @@ class AddVoca extends React.Component {
                 </ul>
                 <ul>
                 <Label></Label>
-                <Input push 
+                <Button
                   type='submit' 
-                  value='+&nbsp;&nbsp;&nbsp;PLUS&nbsp;🥑'
-                ></Input>
+                  value='+&nbsp;&nbsp;Voca🥑'
+                ></Button>
                 </ul>
               </StyledForm>
               </form>

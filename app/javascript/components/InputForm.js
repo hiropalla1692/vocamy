@@ -11,26 +11,21 @@ import lincoln from './img/lincoln.jpg';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  height: 560px;
-  background-image: url(${lincoln});
-  background-position: center 69%; 
+  justify-content: center;
+  background-image: none;
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
-
-  ${props => props.lyrics && css`
-    height: 880px;
-    background-image: none;
-  `};
 `
 
-const LyricsForm = styled.div`
-  flex: 0 0 50%;
-`
 const StyledForm = styled.div`
+  padding: 15px;
   display: flex;
+  flex-basis: 40%;
   flex-direction: column;
-  flex: 0 0 50%;
+  justify-content: center;
+  ${props => props.lyrics && css`
+  flex-basis: 60%;
+  `};
 
 ul {
   display: flex;
@@ -70,7 +65,7 @@ const Input = styled.input`
     color: white;
   }
 
-  &.focus{
+  &:focus{
     ::placeholder{
       color: transparent;
       transition: 0.3s all ease-in-out;
@@ -107,15 +102,17 @@ class InputForm extends React.Component {
       active: false,
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.fillInWord = this.fillInWord.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.onFormSubmit();
-  };
 
   handleFormSubmit() {
     this.props.onFormSubmit();
+  };
+
+  fillInWord(e) {
+    this.props.fillInWord(e);
+    console.log(e);
   };
 
 
@@ -124,57 +121,24 @@ class InputForm extends React.Component {
     const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
-            <Container lyrics>
+            <Search/>
+            <Container>
               <Router>
+                <StyledForm lyrics>  
+                  <Switch>
+                    <Route exact path="/" component={Lyrics} />
+                    <Route exact path="/lyrics/track/:id" 
+                      render={(props) => <LyricsContent {...props} fillInWord={this.fillInWord} />}
+                    />
+                  </Switch>
+                </StyledForm>  
                 <StyledForm>  
-                  <Search/>
                   <AddVoca
                     onFormSubmit = {this.handleFormSubmit}
                     onChange = {this.props.onChange}
                   />
                 </StyledForm>  
-                <StyledForm>  
-                  <Switch>
-                    <Route exact path="/" component={Lyrics} />
-                    <Route exact path="/lyrics/track/:id" component={LyricsContent} />
-                  </Switch>
-                </StyledForm>  
               </Router>
-            </Container>
-            <Container>
-              <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
-              <StyledForm>
-                <ul>
-                  <Label className={FocusIs}>&nbsp;&nbsp;&nbsp;Name</Label>
-                  <Input className={FocusIs}
-                    name='name' 
-                    placeholder='Name' 
-                    value={this.props.input_name} 
-                    onChange={this.props.onChange}
-                    onFocus={() => this.setState({ active: true })}
-                    onBlur={() => this.setState({ active: false })}
-                  ></Input>
-                </ul>
-                <ul>
-                  <Label className={FocusIs}>Japanese</Label>
-                  <Input className={FocusIs}
-                    name='japanese' 
-                    placeholder='Japanese' 
-                    value={this.props.input_japanese} 
-                    onChange={this.props.onChange}
-                    onFocus={() => this.setState({ active: true })}
-                    onBlur={() => this.setState({ active: false })}
-                  ></Input>
-                </ul>
-                <ul>
-                <Label></Label>
-                <Input push 
-                  type='submit' 
-                  value='+&nbsp;&nbsp;&nbsp;PLUS&nbsp;🥑'
-                ></Input>
-                </ul>
-              </StyledForm>
-              </form>
             </Container>
           </React.Fragment>
     );

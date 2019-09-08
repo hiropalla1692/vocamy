@@ -20,12 +20,12 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     track_list: [],
-    heading: 'Latest Top 6 Tracks👶',
+    heading: 'Latest Top 10 Tracks👶',
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
   componentDidMount() {
-    axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=6&
+    axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=hot&page=1&page_size=10&
     country=us&f_has_lyrics=1&apikey=cd969a404a655f1f226f121214a1dbad`)
       .then(res => {
         //console.log(res.data)

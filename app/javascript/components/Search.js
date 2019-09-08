@@ -1,17 +1,61 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { Consumer } from '../context';
 
 const Button = styled.button`
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 1px;
   padding: 0.5rem 0;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0.5rem;
   width: 6rem;
-  background: black;
-  color: white;
-  border: 2px solid white;
+  background: transparent;
+  color: #0ecb27;
+  border: 1px solid #0ecb27;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  &:hover{
+    transition: 0.2s all ease-in-out;
+    background: #0ecb27;
+    color: white;
+  }
+  &:focus{
+    outline: 0;
+  }
+`
+
+const Input = styled.input`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 1px;
+  padding: 0.5rem 0.25rem;
+  margin: 0.5rem 0;
+  width: 18rem;
+  color: black;
+  font-size: 15px;
+  border: 1px solid black;
+  font-family: 'Source Sans Pro', sans-serif;
+  ::placeholder{
+  color: black;
+  }
+
+  &:focus{
+    outline: 0;
+    border: 1px solid #0ecb27;
+    ::placeholder{
+      color: gray;
+    }
+  }
+`
+
+const Container = styled.div`
+  display: inline-flex;
+  color: black;
+  border-radius: 1px; 
+  border-color: black;
+  padding: 0rem 15px;
+  font-family: 'Source Sans Pro', sans-serif;
 `
 
 class Search extends Component {
@@ -44,21 +88,17 @@ class Search extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div>
-              <h1>Search For A Track🏊‍♂️</h1>
-              <p>Add New Voca from any lyrics</p>
+            <Container>
               <form onSubmit={this.findTrack.bind(this,dispatch)} autoComplete="off">
-                <div>
-                  <input 
-                    placeholder="Song Title..."
+                  <Input
+                    placeholder="Search songs & more"
                     name="trackTitle"
                     value={this.state.trackTitle}
                     onChange={this.onChange.bind(this)}
-                  />
-                </div>
-                <Button type="submit">Get Track Lyrics</Button>
+                  ></Input>
+                <Button type="submit">Get Lyrics</Button>
               </form>
-            </div>
+            </Container>
           )
         }}
 
