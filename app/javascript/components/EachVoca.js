@@ -31,6 +31,9 @@ const EachVoca = (props) => {
     <StyledForm>
       <Name><a href="#">{props.name}&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</a></Name>
       <Japanese>{props.japanese}</Japanese>
+      <Name>{props.q_artist}</Name>
+      <Name>{props.q_track}</Name>
+      <Name>{props.q_lyric}</Name>
     </StyledForm>
   );
 };

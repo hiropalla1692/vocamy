@@ -9,6 +9,23 @@ const Container = styled.div`
   flex-flow: column nowrap;
   justify-content: flex-start;
 `
+const Bigtext = styled.h1`
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+`
+const Smalltext = styled.h4`
+  display: block;
+  color: #0ecb27;
+  margin-block-start: 0em;
+  margin-block-end: 2em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+`
 
 class Lyrics extends React.Component {
   render () {
@@ -21,8 +38,8 @@ class Lyrics extends React.Component {
             } else {
               return (
                 <div>
-                  <h1>{heading}</h1>
-                  <h4 style={{ color: "#ff1464" }}>Check out lyrics</h4>
+                  <Bigtext>{heading}</Bigtext>
+                  <Smalltext>Check out lyrics from your favorit songs and expand your vocabulary</Smalltext>
                   <Container>
                     {track_list.map( (item, index) => (
                       <Track 

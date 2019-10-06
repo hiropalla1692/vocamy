@@ -12,6 +12,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: flex-start;
   background-image: none;
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
@@ -20,78 +21,46 @@ const Container = styled.div`
 const StyledForm = styled.div`
   padding: 15px;
   display: flex;
-  flex-basis: 40%;
+  flex-basis: 70%;
   flex-direction: column;
   justify-content: center;
-  ${props => props.lyrics && css`
-  flex-basis: 60%;
+  
+  ${props => props.addvoca && css`
+  flex-basis: 30%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
   `};
-
-ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-ul > label {
-  flex: 1 0 70px;
-  max-width: 70px;
-  font-family: 'Baloo', cursive;
-}
-ul > label + * {
-  flex: 0 0 25%;
-}
+`
+const Accshow = styled.div`
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  transition: 0.2s;
 `
 
 const Input = styled.input`
-  position: relative; 
-  margin: 0;
-  width: 9em;
-  background: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid #white;
-  padding: 10px;
-  outline: none;
-  transition: 0.3s all;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; 
-  color: white;
-  font-size: 20px;
-  font-family: 'Source Sans Pro', sans-serif;
-
-  ::placeholder{
-    color: white;
+  display: none;
+  &:checked + ${Accshow} {
+    height: auto;
+    padding: 5px;
+    opacity: 1;
   }
-
-  &:focus{
-    ::placeholder{
-      color: transparent;
-      transition: 0.3s all ease-in-out;
-    }
-  }
-
-
-  ${props => props.push && css`
-    border-radius: 5px;
-    background: palevioletred;
-    color: white;
-    border: 2px solid palevioletred;
-    font-family: 'Baloo', cursive;
-    font-size: 22px;
-  `};
 `
 
 const Label = styled.label`
-  visibility:hidden;
-  font-size: 14px;
+  display: block;
+  margin: 1.5px 0;
+  padding : 11px 12px;
+  color :#2f8fcf;
+  font-weight: bold;
+  background :#a4cbf3;
+  cursor :pointer;
+  transition: all 0.5s;
 
-  &.focus{
-    visibility:visible;
-    color: white;
-    transition: 0.3s all ease-in-out;
-  }
+  &:hover {
+    background :#85baef;
+}
 `
 
 class InputForm extends React.Component {
@@ -100,11 +69,13 @@ class InputForm extends React.Component {
 
     this.state = {
       active: false,
+      track_name: "",
+      artist_name: ""
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.fillInWord = this.fillInWord.bind(this);
+    this.quoteInfoGet = this.quoteInfoGet.bind(this);
   }
-
 
   handleFormSubmit() {
     this.props.onFormSubmit();
@@ -112,7 +83,14 @@ class InputForm extends React.Component {
 
   fillInWord(e) {
     this.props.fillInWord(e);
-    console.log(e);
+  };
+
+  quoteInfoGet = (quote) => {
+    this.props.quoteInfoGet(quote);
+    this.setState({
+      track_name: quote.track_name,
+      artist_name: quote.artist_name
+    })
   };
 
 
@@ -121,25 +99,31 @@ class InputForm extends React.Component {
     const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
-            <Search/>
-            <Container>
-              <Router>
-                <StyledForm lyrics>  
-                  <Switch>
-                    <Route exact path="/" component={Lyrics} />
-                    <Route exact path="/lyrics/track/:id" 
-                      render={(props) => <LyricsContent {...props} fillInWord={this.fillInWord} />}
+            <Label for='label1'>Music</Label>
+            <Input type='checkbox' id='label1' className='cssacc'></Input>
+            <Accshow>
+              <Search/>
+              <Container>
+                <Router>
+                  <StyledForm>  
+                    <Switch>
+                      <Route exact path="/" component={Lyrics} />
+                      <Route exact path="/lyrics/track/:id" 
+                        render={(props) => <LyricsContent {...props} fillInWord={this.fillInWord} getQuoteInfo={this.quoteInfoGet}/>}
+                      />
+                    </Switch>
+                  </StyledForm>  
+                  <StyledForm addvoca>  
+                    <AddVoca
+                      onFormSubmit = {this.handleFormSubmit}
+                      onChange = {this.props.onChange}
+                      track_name = {this.state.track_name}
+                      artist_name = {this.state.artist_name}
                     />
-                  </Switch>
-                </StyledForm>  
-                <StyledForm>  
-                  <AddVoca
-                    onFormSubmit = {this.handleFormSubmit}
-                    onChange = {this.props.onChange}
-                  />
-                </StyledForm>  
-              </Router>
-            </Container>
+                  </StyledForm>  
+                </Router>
+              </Container>
+            </Accshow>
           </React.Fragment>
     );
   }

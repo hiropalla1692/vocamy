@@ -6,106 +6,112 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 1px;
-  padding: 8px;
-  border: solid yellow;
-  background: #ffff70;
+  padding: 16px;
+  border: solid #0ecb27;
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
-
-  ${props => props.lyrics && css`
-    height: 880px;
-    background-image: none;
-  `};
 `
 const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 0 0 50%;
-
+  flex: 0 1 20%;
 ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 ul > label {
-  flex: 1 0 20px;
-  max-width: 20px;
+  flex: 1 0 10px;
+  max-width: 60px;
   font-family: 'Baloo', cursive;
 }
 ul > label + * {
-  flex: 0 0 25%;
+  flex: 0 0 10%;
 }
 `
 
 const Input = styled.input`
   position: relative; 
   margin: 0;
-  width: 9em;
-  background: none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid ;
-  padding: 10px;
+  width: 12em;
+  background-color: white;
+  border: solid 1px black;
+  padding: 1px;
   outline: none;
-  transition: 0.3s all;
+  transition: 0.2s all;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; 
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Source Sans Pro', sans-serif;
 
   &.focus{
+    border: solid 1px #0ecb27;
+    transition: 0.2s all ease-in-out;
     ::placeholder{
       color: transparent;
-      transition: 0.3s all ease-in-out;
+      transition: 0.2s all ease-in-out;
     }
   }
-
-
-  ${props => props.push && css`
-    border-radius: 5px;
-    background: palevioletred;
-    border: 2px solid palevioletred;
-    font-family: 'Baloo', cursive;
-    font-size: 22px;
-  `};
 `
 
 const Label = styled.label`
+  position: relative;
   visibility:hidden;
-
   font-size: 14px;
-
   &.focus{
     visibility:visible;
-    transition: 0.3s all ease-in-out;
+    transition: 0.2s all ease-in-out;
   }
 `
 
-const Button = styled.input`
+const Button = styled.button`
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 1px;
   padding: 0.5rem 0;
-  margin: 0.5rem 0;
-  width: 8rem;
+  margin: 0.5rem 0.5rem;
+  width: 6rem;
   background: transparent;
-  border: 1px solid;
+  color: #0ecb27;
+  border: 1px solid #0ecb27;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+  &:hover{
+    transition: 0.2s all ease-in-out;
+    background: #0ecb27;
+    color: white;
+  }
+  &:focus{
+    outline: 0;
+  }
+  &:active{
+    background: pink;
+    transition: 0.2s all ease-in-out;
+  }
+`
+const Bigtext = styled.h2`
+  display: block;
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 `
 
 class AddVoca extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       active: false,
     }
   }
 
   handleSubmit(e) {
+    let returnButtonText = () => document.getElementById("addvoca").innerHTML="+&nbsp;&nbsp;Voca🥑";
     e.preventDefault();
+    document.getElementById("addvoca").innerHTML="Done!";
     this.props.onFormSubmit();
+    setTimeout(returnButtonText, 3000);
   };
+
 
 
   render () {
@@ -114,7 +120,7 @@ class AddVoca extends React.Component {
     return (
           <React.Fragment>
             <Container>
-            <h1>Let's Add New Voca💸</h1>
+            <Bigtext>Let's Add New Voca💸</Bigtext>
             <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
               <StyledForm>
                 <ul>
@@ -132,7 +138,7 @@ class AddVoca extends React.Component {
                 <ul>
                   <Label className={FocusIs}>Japanese</Label>
                   <Input className={FocusIs}
-                    name='japanese' 
+                    name='input_japanese' 
                     placeholder='Japanese' 
                     value={this.props.input_japanese} 
                     onChange={this.props.onChange}
@@ -140,13 +146,8 @@ class AddVoca extends React.Component {
                     onBlur={() => this.setState({ active: false })}
                   ></Input>
                 </ul>
-                <ul>
-                <Label></Label>
-                <Button
-                  type='submit' 
-                  value='+&nbsp;&nbsp;Voca🥑'
-                ></Button>
-                </ul>
+                <Button type='submit' id='addvoca'>+&nbsp;&nbsp;Voca🥑</Button>
+                <h5>{this.props.track_name}&nbsp;&nbsp;by&nbsp;&nbsp;{this.props.artist_name}</h5>
               </StyledForm>
               </form>
             </Container>

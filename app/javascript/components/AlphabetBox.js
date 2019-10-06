@@ -2,15 +2,17 @@ import React from 'react';
 import styled, { css } from 'styled-components'
 
 const Alphabet = styled.button`
-  background-color: trnasparent;
-  color: palevioletred;
+  background-color: transparent;
+  color: #0ecb27;
   text-align: center;
   font-size: 32px;
   font-family: 'Baloo', cursive;
-  border-radius: 5px;
-  border: 4px solid palevioletred;
-  margin: 0 14px;
-  padding: 0 16px;
+  border-radius: 1px;
+  border: 3px solid #0ecb27;
+  margin: 20px 0px;
+  padding: 0 0px;
+  height: 54px;
+  width: 54px;
 
   ${props =>
     props.primary &&

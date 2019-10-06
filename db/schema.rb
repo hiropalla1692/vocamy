@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_083905) do
+ActiveRecord::Schema.define(version: 2019_10_06_082050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2019_05_02_083905) do
     t.text "japanese"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "q_artist"
+    t.string "q_track"
+    t.text "q_lyric"
   end
 
 end

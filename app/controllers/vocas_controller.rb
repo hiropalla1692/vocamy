@@ -25,6 +25,6 @@ class VocasController < ApplicationController
   private
 
   def voca_params
-    params.require(:voca).permit(:name, :japanese)
+    params.require(:voca).permit(:name, :japanese, :q_track, :q_artist, :q_lyric)
   end
 end

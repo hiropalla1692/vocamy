@@ -31,10 +31,12 @@ class LyricsContent extends React.Component {
   }
 
   handleClick (e) {
-    console.log(e.target.title);
     this.props.fillInWord(e.target.title);
     document.getElementById( "name" ).value = e.target.title.toLowerCase();
+    let quote = this.state.track;
+    this.props.getQuoteInfo(quote);
   }
+
 
   componentDidMount() {
     axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`)
@@ -49,8 +51,7 @@ class LyricsContent extends React.Component {
       })
       .catch(err => console.log(err));
   }
-
-  
+ 
 
   
   render() {
