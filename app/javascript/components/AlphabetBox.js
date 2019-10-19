@@ -24,7 +24,7 @@ const Alphabet = styled.button`
 
 const AlphabetBox = (props) => {
   return (
-    <Alphabet>{props.alp}</Alphabet>
+    <Alphabet id={`${props.alp.toLowerCase()}`}>{props.alp}</Alphabet>
   );
 };
 

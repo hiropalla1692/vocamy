@@ -50,16 +50,18 @@ const Input = styled.input`
 
 const Label = styled.label`
   display: block;
+  width: 180px;
   margin: 1.5px 0;
   padding : 11px 12px;
-  color :#2f8fcf;
-  font-weight: bold;
-  background :#a4cbf3;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: 3px solid #0ecb27;
+  color : #0ecb27;
+  background : transparent;
   cursor :pointer;
-  transition: all 0.5s;
-
+  transition: all 0.4s;
   &:hover {
-    background :#85baef;
+    background : #0ecb27;
+    color : white;
 }
 `
 
@@ -99,8 +101,8 @@ class InputForm extends React.Component {
     const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
-            <Label for='label1'>Music</Label>
-            <Input type='checkbox' id='label1' className='cssacc'></Input>
+            <Label for='label1'>+ Cool Music, Cool Lyrics</Label>
+            <Input type='checkbox' id='label1'></Input>
             <Accshow>
               <Search/>
               <Container>

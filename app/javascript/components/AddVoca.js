@@ -107,7 +107,7 @@ class AddVoca extends React.Component {
   handleSubmit(e) {
     let returnButtonText = () => document.getElementById("addvoca").innerHTML="+&nbsp;&nbsp;Voca🥑";
     e.preventDefault();
-    document.getElementById("addvoca").innerHTML="Done!";
+    document.getElementById("addvoca").innerHTML="Done!🍵";
     this.props.onFormSubmit();
     setTimeout(returnButtonText, 3000);
   };
@@ -127,7 +127,7 @@ class AddVoca extends React.Component {
                   <Label className={FocusIs}>Name</Label>
                   <Input className={FocusIs}
                     id = 'name'
-                    name='name' 
+                    name='input_name' 
                     placeholder='Name' 
                     value={this.props.input_name} 
                     onChange={this.props.onChange}
@@ -147,7 +147,6 @@ class AddVoca extends React.Component {
                   ></Input>
                 </ul>
                 <Button type='submit' id='addvoca'>+&nbsp;&nbsp;Voca🥑</Button>
-                <h5>{this.props.track_name}&nbsp;&nbsp;by&nbsp;&nbsp;{this.props.artist_name}</h5>
               </StyledForm>
               </form>
             </Container>

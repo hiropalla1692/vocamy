@@ -4,13 +4,39 @@ import InputForm from './InputForm'
 import AlphabetBox from './AlphabetBox'
 import EachVoca from './EachVoca'
 import { Provider } from '../context';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {HashLink} from 'react-router-hash-link';
 import update from 'immutability-helper';
 
 const Container = styled.div`
   display: flex;
   flex-flow: column wrap;
 `
+const VocaList = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+`
 
+const VocaSearch = styled.div`
+  writing-mode: tb-rl;
+  color: #0ecb27;
+  font-family: 'Baloo', cursive;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid #0ecb27;
+  height: 450px;
+  margin: 50px 250px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  a {
+      color: #0ecb27;
+      text-decoration: none;
+      &:hover {
+        color: pink;
+      }
+    }
+`
 
 
 class Vocas extends React.Component {
@@ -91,30 +117,43 @@ class Vocas extends React.Component {
             quoteInfoGet = {this.quoteInfoGet}
             />
           </div>
-          <div>
-          {alphabets.map((i) => {
-            return (
+          <VocaList>
+            <Router>
               <div>
-              <AlphabetBox
-                alp = {i.toUpperCase()}
-              />
-              {this.state.vocas.map ((voca) => {
-                if (voca.name[0] === i) {
-                  return (
-                    <EachVoca
-                    key = {voca.id}
-                    name = {voca.name}
-                    japanese = {voca.japanese}
-                    q_artist = {voca.q_artist}
-                    q_track = {voca.q_track}
-                    q_lyric = {voca.q_lyric}
+              {alphabets.map((i) => {
+                return (
+                  <div>
+                  <AlphabetBox
+                    alp = {i.toUpperCase()}
                   />
-                  );
-                }
-              })}
+                  {this.state.vocas.map ((voca) => {
+                    if (voca.name[0] === i) {
+                      return (
+                        <EachVoca
+                        key = {voca.id}
+                        name = {voca.name}
+                        japanese = {voca.japanese}
+                        q_artist = {voca.q_artist}
+                        q_track = {voca.q_track}
+                        q_lyric = {voca.q_lyric}
+                      />
+                      );
+                    }
+                  })}
+                  </div>
+                );})}
               </div>
-            );})}
-          </div>
+              <VocaSearch>
+                {alphabets.map((i) => {
+                  return (
+                    <HashLink smooth to={`#${i}`}>
+                      {i.toUpperCase()}&nbsp;&nbsp;
+                    </HashLink>
+                  );
+              })};
+              </VocaSearch>
+            </Router>
+          </VocaList>
         </Container>
       </Provider>
     );}
