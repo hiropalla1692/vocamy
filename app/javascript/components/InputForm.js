@@ -72,7 +72,8 @@ class InputForm extends React.Component {
     this.state = {
       active: false,
       track_name: "",
-      artist_name: ""
+      artist_name: "",
+      quote_lyrics: ""
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.fillInWord = this.fillInWord.bind(this);
@@ -90,8 +91,9 @@ class InputForm extends React.Component {
   quoteInfoGet = (quote) => {
     this.props.quoteInfoGet(quote);
     this.setState({
-      track_name: quote.track_name,
-      artist_name: quote.artist_name
+      track_name: quote[0].track_name,
+      artist_name: quote[0].artist_name,
+      quote_lyrics: quote[1]
     })
   };
 
@@ -121,6 +123,7 @@ class InputForm extends React.Component {
                       onChange = {this.props.onChange}
                       track_name = {this.state.track_name}
                       artist_name = {this.state.artist_name}
+                      quote_lyrics = {this.state.quote_lyrics}
                     />
                   </StyledForm>  
                 </Router>

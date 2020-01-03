@@ -11,9 +11,8 @@ const StyledForm = styled.div`
 
 const Name = styled.span`
   text-align: left;
-  font-size: 18px
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: bold;
+  font-size: 16px;
+  font-family: 'Karla', sans-serif;
     a {
       color: black;
       text-decoration: none;
@@ -29,7 +28,7 @@ const Japanese = styled.span`
 const Quote= styled.span`
   text-align: left;
   font-size: 11px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Karla', sans-serif;
   a {
       color: black;
       text-decoration: none;
@@ -56,8 +55,7 @@ const Label = styled.label`
   display: block;
   margin: 1px 0;
   padding : 2px 2px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: bold;
+  font-family: 'Karla', sans-serif;
   background : transparent;
   cursor :pointer;
   transition: all 0.3s;
@@ -88,7 +86,7 @@ const EachVoca = (props) => {
         <StyledForm>
           <Input type='checkbox' id={props.name}></Input>
           <Accshow>
-            あ
+            <a>"{props.q_lyric}"</a>
           </Accshow>
         </StyledForm>
       </React.Fragment>

@@ -25,7 +25,7 @@ const VocaSearch = styled.div`
   border-radius: 12px;
   border: 2px solid #0ecb27;
   height: 450px;
-  margin: 50px 250px;
+  margin: 50px 100px;
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
@@ -68,7 +68,7 @@ class Vocas extends React.Component {
       japanese: this.state.input_japanese,
       q_artist: this.state.input_q_artist,
       q_track: this.state.input_q_track,
-      q_lyric: this.state.input_q_lyric
+      q_lyric: this.state.input_q_lyric,
     }
     $.post('/vocas',{voca: voca})
       .done((data) => {
@@ -97,8 +97,9 @@ class Vocas extends React.Component {
 
   quoteInfoGet = (quote) => {
     this.setState({
-      input_q_track: quote.track_name,
-      input_q_artist: quote.artist_name
+      input_q_track: quote[0].track_name,
+      input_q_artist: quote[0].artist_name,
+      input_q_lyric: quote[1]
     })
   };
   
