@@ -41,6 +41,11 @@ const Accshow = styled.div`
   margin: 0;
   opacity: 0;
   transition: 0.2s;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  color: purple;
+
 `
 
 const Input = styled.input`
@@ -86,7 +91,7 @@ const EachVoca = (props) => {
         <StyledForm>
           <Input type='checkbox' id={props.name}></Input>
           <Accshow>
-            <a>"{props.q_lyric}"</a>
+            <span>👉&nbsp;{props.q_lyric}</span>
           </Accshow>
         </StyledForm>
       </React.Fragment>
