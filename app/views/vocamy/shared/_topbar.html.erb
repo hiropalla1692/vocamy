@@ -1,12 +1,15 @@
 <!-- TOPBAR -->
 <div class="topbar">
-  <div class="search">
-  </div>
   <div class="logo_container">
     <a href="#" class="logo_link">Vocamy🥑</a>
   </div>
   <div class="menu_container">
-    <ul>SIGN UP</ul>
-    <ul>SIGN IN</ul>
+    <% if logged_in? %>
+      <ul><%= link_to "ACCOUNT", current_user %></ul>
+      <ul><%= link_to "LOG OUT", logout_path, method: "delete" %></ul>
+    <% else %>
+      <ul>SIGN UP</ul>
+      <ul><%= link_to "LOG IN", "/login" %></ul>
+    <% end %>
   </div>
 </div>
