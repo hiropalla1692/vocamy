@@ -44,6 +44,7 @@ class Vocas extends React.Component {
     super(props);
     this.state = {
       vocas: this.props.vocas,
+      user: this.props.user,
       text: null,
       input_name: '',
       input_japanese: '',
@@ -69,9 +70,11 @@ class Vocas extends React.Component {
       q_artist: this.state.input_q_artist,
       q_track: this.state.input_q_track,
       q_lyric: this.state.input_q_lyric,
+      user_id: this.state.user.id,
     }
     $.post('/vocas',{voca: voca})
       .done((data) => {
+        console.log(data)
         this.addNewVoca(data);
       });
   }

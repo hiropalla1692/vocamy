@@ -5,7 +5,7 @@
   </div>
   <div class="menu_container">
     <% if logged_in? %>
-      <ul><%= link_to "USERS", users_path %></ul>
+      <ul><%= link_to "HOME", root_path %></ul>
       <ul><%= link_to "ACCOUNT", current_user %></ul>
       <ul><%= link_to "EDIT", edit_user_path(current_user) %></li>
       <ul><%= link_to "LOG OUT", logout_path, method: "delete" %></ul>

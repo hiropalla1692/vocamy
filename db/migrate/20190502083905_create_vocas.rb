@@ -6,6 +6,7 @@ class CreateVocas < ActiveRecord::Migration[5.2]
       t.string :q_artist
       t.string :q_track
       t.text :q_lyric
+      t.references :user, index: true, foreign_key: true
       t.timestamps
     end
   end

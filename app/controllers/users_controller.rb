@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = current_user
+    @vocas = current_user.vocas.order(:name)
+    @voca = Voca.new
   end
 
   def show
