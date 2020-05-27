@@ -2,5 +2,10 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
-<%= @user.name %>, <%= @user.email %>
+<div>
+  Name: <%= @user.name %>
+</div>
+<div>
+  E-mail: <%= @user.email %><h4>hjiji</h4>
+</div>
 <%= react_component('Vocas', {vocas: @vocas, user: @user}) %>

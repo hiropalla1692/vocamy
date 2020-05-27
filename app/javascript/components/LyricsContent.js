@@ -19,7 +19,6 @@ const SingleWord = styled.span`
     }
 `
 
-
 class LyricsContent extends React.Component {
   constructor(props) {
     super(props);
@@ -32,21 +31,23 @@ class LyricsContent extends React.Component {
 
   handleClick (e) {
     this.props.fillInWord(e.target.title);
+
     document.getElementById( "name" ).value = e.target.title.toLowerCase();
+
     let q_line = this.state.lyrics.lyrics_body.split(/\r?\n/);
     let q_line_arr = [];
+
     q_line.map((value) => {
       q_line_arr.push(value)
     });
-    for (var value of q_line_arr) {
 
+    for (var value of q_line_arr) {
       if (value.includes(e.target.title)) {
         let q_lyrics = value
         let quote = [this.state.track, q_lyrics];
         this.props.getQuoteInfo(quote);
         break;
       }
-
     }
   }
 

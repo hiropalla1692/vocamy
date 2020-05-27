@@ -25,7 +25,7 @@ const Japanese = styled.span`
   font-family: 'Kosugi Maru', sans-serif;
 `
 
-const Quote= styled.span`
+const Quote　= styled.span`
   text-align: left;
   font-size: 11px;
   font-family: 'Karla', sans-serif;
@@ -41,10 +41,10 @@ const Accshow = styled.div`
   margin: 0;
   opacity: 0;
   transition: 0.2s;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Karla', sans-serif;
   font-style: italic;
-  font-size: 16px;
-  color: purple;
+  font-size: 14px;
+  color: gray;
 
 `
 

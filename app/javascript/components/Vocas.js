@@ -16,6 +16,35 @@ const VocaList = styled.div`
   display: flex;
   flex-flow: row wrap;
 `
+const ToggleBar = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  text-align: center;
+  margin: 5% 5% 5% 5% !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  
+  p {
+    text-align: center;
+    margin: 20px 20px 20px 20px;
+  }
+`
+const Button = styled.button`
+  border-radius: 50%;
+  background: transparent;
+  color: pink;
+  text-align: center;
+  font-size: 24px;
+  height: 120px;
+  width: 120px;
+  border: 2px solid pink;
+  outline: none;
+
+  ${props => props.set && css`
+    background: pink;
+    color: white;
+  `}
+`;
 
 const VocaSearch = styled.div`
   writing-mode: tb-rl;
@@ -25,7 +54,7 @@ const VocaSearch = styled.div`
   border-radius: 12px;
   border: 2px solid #0ecb27;
   height: 450px;
-  margin: 50px 100px;
+  margin: 30px 45px;
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
@@ -38,11 +67,11 @@ const VocaSearch = styled.div`
     }
 `
 
-
 class Vocas extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isAdd: 'true',
       vocas: this.props.vocas,
       user: this.props.user,
       text: null,
@@ -57,6 +86,8 @@ class Vocas extends React.Component {
     this.addNewVoca = this.addNewVoca.bind(this);
     this.fillInWord = this.fillInWord.bind(this);
     this.quoteInfoGet= this.quoteInfoGet.bind(this);
+    this.setIsAddTrue= this.setIsAddTrue.bind(this);
+    this.setIsAddFalse= this.setIsAddFalse.bind(this);
   }
 
   handleChange(e) {
@@ -105,59 +136,89 @@ class Vocas extends React.Component {
       input_q_lyric: quote[1]
     })
   };
-  
+
+  setIsAddTrue = () => {
+    this.setState(() => ({
+      isAdd: 'true'
+    }))
+  };
+
+  setIsAddFalse = () => {
+    this.setState(() => ({
+      isAdd: 'false'
+    }))
+  };
+
   render() {
     var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     return (
       <Provider>
         <Container>
-          <div>
-            <InputForm
-            input_name = {this.state.input_name}
-            input_japanese = {this.state.input_japanese}
-            onChange = {this.handleChange}
-            fillInWord = {this.fillInWord}
-            onFormSubmit = {this.handleFormSubmit}
-            quoteInfoGet = {this.quoteInfoGet}
-            />
-          </div>
-          <VocaList>
-            <Router>
-              <div>
-              {alphabets.map((i) => {
-                return (
-                  <div>
-                  <AlphabetBox
-                    alp = {i.toUpperCase()}
-                  />
-                  {this.state.vocas.map ((voca) => {
-                    if (voca.name[0] === i) {
-                      return (
-                        <EachVoca
-                        key = {voca.id}
-                        name = {voca.name}
-                        japanese = {voca.japanese}
-                        q_artist = {voca.q_artist}
-                        q_track = {voca.q_track}
-                        q_lyric = {voca.q_lyric}
-                      />
-                      );
-                    }
-                  })}
-                  </div>
-                );})}
-              </div>
-              <VocaSearch>
-                {alphabets.map((i) => {
-                  return (
-                    <HashLink smooth to={`#${i}`}>
-                      {i.toUpperCase()}&nbsp;&nbsp;
-                    </HashLink>
-                  );
-              })};
-              </VocaSearch>
-            </Router>
-          </VocaList>
+          {this.state.isAdd === 'true'
+          ? (
+            <div>
+              <ToggleBar>
+                  <Button set onClick={this.setIsAddTrue}>Add🥑</Button>
+                  <p>← Hi, Click me!! →</p>
+                  <Button onClick={this.setIsAddFalse}>Look🥑</Button>
+              </ToggleBar>
+              <InputForm
+                input_name = {this.state.input_name}
+                input_japanese = {this.state.input_japanese}
+                onChange = {this.handleChange}
+                fillInWord = {this.fillInWord}
+                onFormSubmit = {this.handleFormSubmit}
+                quoteInfoGet = {this.quoteInfoGet}
+              />
+            </div>
+            ) 
+          : (
+            <div>
+              <ToggleBar>
+                <Button onClick={this.setIsAddTrue} >Add🥑</Button>
+                <p>← Hi, Click me!! →</p>
+                <Button set onClick={this.setIsAddFalse} >Look🥑</Button>
+              </ToggleBar>
+              <VocaList>
+                <Router>
+                <VocaSearch>
+                  {alphabets.map((i) => {
+                    return (
+                      <HashLink smooth to={`#${i}`}>
+                        {i.toUpperCase()}&nbsp;&nbsp;
+                      </HashLink>
+                    );
+                  })};
+                </VocaSearch>
+                <div>
+                  {alphabets.map((i) => {
+                    return (
+                      <div>
+                        <AlphabetBox
+                          alp = {i.toUpperCase()}
+                        />
+                        {this.state.vocas.map ((voca) => {
+                          if (voca.name[0] === i) {
+                            return (
+                              <EachVoca
+                                key = {voca.id}
+                                name = {voca.name}
+                                japanese = {voca.japanese}
+                                q_artist = {voca.q_artist}
+                                q_track = {voca.q_track}
+                                q_lyric = {voca.q_lyric}
+                              />
+                            );
+                          }
+                        })}
+                      </div>
+                  );})}
+                </div>
+                </Router>
+              </VocaList>
+            </div>
+            )
+          }
         </Container>
       </Provider>
     );}

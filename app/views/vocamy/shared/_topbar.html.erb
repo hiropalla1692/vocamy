@@ -1,13 +1,13 @@
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="logo_container">
-    <a href="#" class="logo_link">Vocamy🥑</a>
+    <%= link_to "Vocamy🥑", root_path %>
   </div>
   <div class="menu_container">
     <% if logged_in? %>
       <ul><%= link_to "HOME", root_path %></ul>
       <ul><%= link_to "ACCOUNT", current_user %></ul>
-      <ul><%= link_to "EDIT", edit_user_path(current_user) %></li>
+      <ul><%= link_to "EDIT", edit_user_path(current_user) %></ul>
       <ul><%= link_to "LOG OUT", logout_path, method: "delete" %></ul>
     <% else %>
       <ul>SIGN UP</ul>

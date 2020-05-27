@@ -39,11 +39,7 @@ body {
   font-family: 'Baloo', cursive;
   background-color: $color-main;
 
-  .search {
-    flex-basis: 20%;
-  }
   .logo_container {
-    flex-basis: 60%;
     text-align: center;
     font-family: 'Pacifico', cursive;
     font-size: 24px;
@@ -54,10 +50,17 @@ body {
   }
   .menu_container {
     display: flex;
-    flex-basis: 20%;
+    justify-content: space-around;
+    text-align: center;
     ul {
+      margin: 0 0 0 1em;
+      padding: 0;
+    }
+    a, a:visited {
       color: white;
-      font-size: 14px
+      font-size: 14px;
+      text-decoration: none;
+      text-align: center;
     }
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import dotenv from 'dotenv';
 
 const Context = React.createContext();
 

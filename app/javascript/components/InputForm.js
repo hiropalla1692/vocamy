@@ -5,7 +5,6 @@ import LyricsContent from './LyricsContent';
 import Search from './Search';
 import styled, {css} from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import lincoln from './img/lincoln.jpg';
 
 
 const Container = styled.div`
@@ -32,45 +31,12 @@ const StyledForm = styled.div`
   top: 50px;
   `};
 `
-const Accshow = styled.div`
-  height: 0;
-  padding: 0;
-  opacity: 0;
-  transition: 0.2s;
-`
-
-const Input = styled.input`
-  display: none;
-  &:checked + ${Accshow} {
-    height: auto;
-    padding: 5px;
-    opacity: 1;
-  }
-`
-
-const Label = styled.label`
-  display: block;
-  width: 180px;
-  margin: 1.5px 0;
-  padding : 11px 12px;
-  font-family: 'Source Sans Pro', sans-serif;
-  border: 3px solid #0ecb27;
-  color : #0ecb27;
-  background : transparent;
-  cursor :pointer;
-  transition: all 0.4s;
-  &:hover {
-    background : #0ecb27;
-    color : white;
-}
-`
 
 class InputForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      active: false,
       track_name: "",
       artist_name: "",
       quote_lyrics: ""
@@ -99,13 +65,8 @@ class InputForm extends React.Component {
 
 
   render () {
-    const { active } = this.state;
-    const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
-            <Label for='label1'>+ Cool Music, Cool Lyrics</Label>
-            <Input type='checkbox' id='label1'></Input>
-            <Accshow>
               <Search/>
               <Container>
                 <Router>
@@ -128,7 +89,6 @@ class InputForm extends React.Component {
                   </StyledForm>  
                 </Router>
               </Container>
-            </Accshow>
           </React.Fragment>
     );
   }
