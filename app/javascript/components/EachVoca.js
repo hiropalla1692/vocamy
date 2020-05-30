@@ -68,9 +68,29 @@ const Label = styled.label`
     color : #0ecb27;
 }
 `
+const Button = styled.p`
+  display: inline-block;
+  border-radius: 1px;
+  padding: 0 0;
+  width: 8rem;
+  background: transparent;
+  color: #0ecb27;
+  text-align: center;
+  border: 1px solid #0ecb27;
+  &:hover{
+    transition: 0.2s all ease-in-out;
+    background: #0ecb27;
+    color: white;
+  }
+  &:focus{
+    outline: 0;
+  }
+`
+
 
 
 const EachVoca = (props) => {
+
   if (props.q_artist === null) {
     return (
       <StyledForm>
@@ -91,7 +111,7 @@ const EachVoca = (props) => {
         <StyledForm>
           <Input type='checkbox' id={props.name}></Input>
           <Accshow>
-            <span>👉&nbsp;{props.q_lyric}</span>
+            <span>👉&nbsp;{props.q_lyric}</span>&nbsp;&nbsp;
           </Accshow>
         </StyledForm>
       </React.Fragment>

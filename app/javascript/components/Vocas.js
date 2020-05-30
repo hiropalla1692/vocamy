@@ -122,6 +122,7 @@ class Vocas extends React.Component {
         });
   }
 
+
   fillInWord (e) {
     console.log(e);
     this.setState({
