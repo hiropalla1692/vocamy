@@ -31,7 +31,6 @@ class LyricsContent extends React.Component {
 
   handleClick (e) {
     this.props.fillInWord(e.target.title);
-
     document.getElementById( "name" ).value = e.target.title.toLowerCase();
 
     let q_line = this.state.lyrics.lyrics_body.split(/\r?\n/);
