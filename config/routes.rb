@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :vocas
   resources :users
+  get '*path', to: 'users#index'
 end

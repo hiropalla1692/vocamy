@@ -5,6 +5,8 @@ import styled, {css} from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  text-align: center;
   border-radius: 1px;
   padding: 16px;
   border: solid #0ecb27;
@@ -14,6 +16,8 @@ const Container = styled.div`
 const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
+  justify-content: center;
   flex: 0 1 20%;
 ul {
   display: flex;
@@ -21,7 +25,6 @@ ul {
 ul > label {
   flex: 1 0 10px;
   max-width: 60px;
-  font-family: 'Baloo', cursive;
 }
 ul > label + * {
   flex: 0 0 10%;
@@ -40,7 +43,7 @@ const Input = styled.input`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; 
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Source Sans Pro', sans-serif;
 
   &.focus{
@@ -54,13 +57,9 @@ const Input = styled.input`
 `
 
 const Label = styled.label`
+  font-family: 'Source Sans Pro', sans-serif;
   position: relative;
-  visibility:hidden;
   font-size: 14px;
-  &.focus{
-    visibility:visible;
-    transition: 0.2s all ease-in-out;
-  }
 `
 
 const Button = styled.button`
@@ -99,24 +98,19 @@ const Bigtext = styled.h2`
 class AddVoca extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      active: false,
-    }
   }
 
   handleSubmit(e) {
     let returnButtonText = () => document.getElementById("addvoca").innerHTML="+&nbsp;&nbsp;Voca🥑";
     e.preventDefault();
-    document.getElementById("addvoca").innerHTML="Done!🍵";
+    document.getElementById("addvoca").innerHTML="Done😎";
     this.props.onFormSubmit();
-    setTimeout(returnButtonText, 3000);
+    setTimeout(returnButtonText, 4000);
   };
 
 
 
   render () {
-    const { active } = this.state;
-    const FocusIs = `${(active === true) && 'focus' || ''}`;
     return (
           <React.Fragment>
             <Container>
@@ -124,11 +118,11 @@ class AddVoca extends React.Component {
             <form onSubmit={(e)=>this.handleSubmit(e)} autoComplete="off">
               <StyledForm>
                 <ul>
-                  <Label className={FocusIs}>Name</Label>
-                  <Input className={FocusIs}
+                  <Label>Voca</Label>
+                  <Input 
                     id = 'name'
                     name='input_name' 
-                    placeholder='Name' 
+                    placeholder='単語をクリック!' 
                     value={this.props.input_name} 
                     onChange={this.props.onChange}
                     onFocus={() => this.setState({ active: true })}
@@ -136,17 +130,19 @@ class AddVoca extends React.Component {
                   ></Input>
                 </ul>
                 <ul>
-                  <Label className={FocusIs}>Japanese</Label>
-                  <Input className={FocusIs}
+                  <Label>Meaning</Label>
+                  <Input
                     name='input_japanese' 
-                    placeholder='Japanese' 
+                    placeholder='訳語を記入しよう!' 
                     value={this.props.input_japanese} 
                     onChange={this.props.onChange}
                     onFocus={() => this.setState({ active: true })}
                     onBlur={() => this.setState({ active: false })}
                   ></Input>
                 </ul>
-                <Button type='submit' id='addvoca'>+&nbsp;&nbsp;Voca🥑</Button>
+                <div>
+                  <Button type='submit' id='addvoca'>+&nbsp;&nbsp;Voca🥑</Button>
+                </div>
               </StyledForm>
               </form>
             </Container>

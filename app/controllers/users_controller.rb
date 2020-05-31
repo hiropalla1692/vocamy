@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @vocas = current_user.vocas.order(:name)
   end
 
   def new
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Vocamy!"
-      redirect_to @user
+      redirect_to root_url
     else 
       render 'new'
     end
@@ -31,10 +32,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @vocas = current_user.vocas.order(:name)
   end
 
   def update
     @user = User.find(params[:id])
+    @vocas = current_user.vocas.order(:name)
     if @user.update_attribute(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -45,6 +48,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
+    @vocas = current_user.vocas.order(:name)
     flash[:success] = "User deleted"
     redirect_to users_url
   end

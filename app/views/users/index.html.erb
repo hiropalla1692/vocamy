@@ -1,11 +1,3 @@
 <% provide(:title, 'All users') %>
 
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
-<h4>
-  YOUR VOCABLARY：<%= @vocas.length %> vocas
-</h4>
-
 <%= react_component('Vocas', {vocas: @vocas, user: @user}) %>

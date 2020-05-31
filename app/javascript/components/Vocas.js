@@ -9,6 +9,7 @@ import {HashLink} from 'react-router-hash-link';
 import update from 'immutability-helper';
 
 const Container = styled.div`
+  margin-bottom: 15%;
   display: flex;
   flex-flow: column wrap;
 `
@@ -23,8 +24,9 @@ const ToggleBar = styled.div`
   text-align: center;
   margin: 5% 5% 5% 5% !important;
   font-family: 'Source Sans Pro', sans-serif;
-  
   p {
+    position: relative;
+    top: 25%;
     text-align: center;
     margin: 20px 20px 20px 20px;
   }
@@ -39,10 +41,16 @@ const Button = styled.button`
   width: 120px;
   border: 2px solid pink;
   outline: none;
+  &:hover {
+    background: silver;
+  }
 
   ${props => props.set && css`
     background: pink;
     color: white;
+    &:hover {
+    background: pink;
+    }
   `}
 `;
 
@@ -160,7 +168,7 @@ class Vocas extends React.Component {
             <div>
               <ToggleBar>
                   <Button set onClick={this.setIsAddTrue}>Add🥑</Button>
-                  <p>← Hi, Click me!! →</p>
+                  <div><p>Check out your VOCAS →</p></div>
                   <Button onClick={this.setIsAddFalse}>Look🥑</Button>
               </ToggleBar>
               <InputForm
@@ -177,7 +185,7 @@ class Vocas extends React.Component {
             <div>
               <ToggleBar>
                 <Button onClick={this.setIsAddTrue} >Add🥑</Button>
-                <p>← Hi, Click me!! →</p>
+                <div><p>← Let's add new VOCA</p></div>
                 <Button set onClick={this.setIsAddFalse} >Look🥑</Button>
               </ToggleBar>
               <VocaList>
@@ -199,7 +207,7 @@ class Vocas extends React.Component {
                           alp = {i.toUpperCase()}
                         />
                         {this.state.vocas.map ((voca) => {
-                          if (voca.name[0] === i) {
+                          if (voca.name[0].toLowerCase() === i) {
                             return (
                               <EachVoca
                                 key = {voca.id}

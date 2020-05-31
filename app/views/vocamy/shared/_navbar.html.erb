@@ -1,7 +1,11 @@
 <!-- NAVBAR -->
-<div class="navbar">
-  <a href="#" class="navbar_menu">  VOCA  </a>
-  <a href="#" class="navbar_menu">  SENTENCE  </a>
-  <a href="#" class="navbar_menu">  NEW  </a>
-  <a href="#" class="navbar_menu">  ABOUT  </a>
-</div>
+<% if logged_in? %>
+  <div class="navbar">
+    <h3>Hi, <%= link_to user.name, current_user %>&nbsp;!&nbsp;&nbsp;&nbsp;</h3>
+    <h3>Now you got <strong><%= vocas.length %></strong> VOCAs.</h3>
+  </div>
+<% else %>
+  <div class="navbar">
+    <h3>howdy🌞</h3>
+  </div>
+<% end %>
