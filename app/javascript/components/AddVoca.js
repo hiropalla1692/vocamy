@@ -7,9 +7,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border-radius: 1px;
+  border-radius: 4%;
   padding: 16px;
-  border: solid #0ecb27;
+  border: solid pink;
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
 `

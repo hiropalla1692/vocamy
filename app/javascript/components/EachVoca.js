@@ -68,15 +68,16 @@ const Label = styled.label`
     color : #0ecb27;
 }
 `
-const Button = styled.p`
+const Button = styled.button`
   display: inline-block;
   border-radius: 1px;
-  padding: 0 0;
-  width: 8rem;
+  padding: 0.5rem 0.5rem;
+  margin: 1rem 1rem;
   background: transparent;
   color: #0ecb27;
-  text-align: center;
   border: 1px solid #0ecb27;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
   &:hover{
     transition: 0.2s all ease-in-out;
     background: #0ecb27;
@@ -90,6 +91,11 @@ const Button = styled.p`
 
 
 const EachVoca = (props) => {
+  
+  const handleDelete = (id) => {
+    console.log(id)
+    props.onDelete(id);
+  }
 
   if (props.q_artist === null) {
     return (
@@ -111,7 +117,8 @@ const EachVoca = (props) => {
         <StyledForm>
           <Input type='checkbox' id={props.name}></Input>
           <Accshow>
-            <span>👉&nbsp;{props.q_lyric}</span>&nbsp;&nbsp;
+            <span>👉&nbsp;{props.q_lyric}</span>&nbsp;&nbsp;<br></br>
+            <Button onClick={()=>{handleDelete(props.id)}}>delete</Button>
           </Accshow>
         </StyledForm>
       </React.Fragment>

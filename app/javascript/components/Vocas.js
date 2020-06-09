@@ -92,10 +92,12 @@ class Vocas extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.addNewVoca = this.addNewVoca.bind(this);
+    this.deleteVoca = this.deleteVoca.bind(this);
     this.fillInWord = this.fillInWord.bind(this);
     this.quoteInfoGet= this.quoteInfoGet.bind(this);
     this.setIsAddTrue= this.setIsAddTrue.bind(this);
     this.setIsAddFalse= this.setIsAddFalse.bind(this);
+    this.onSubmitDelete = this.onSubmitDelete.bind(this);
   }
 
   handleChange(e) {
@@ -113,21 +115,56 @@ class Vocas extends React.Component {
     }
     $.post('/vocas',{voca: voca})
       .done((data) => {
-        console.log(data)
         this.addNewVoca(data);
       });
   }
 
-  addNewVoca (voca) {
+  addNewVoca(voca) {
     var vocas = update(this.state.vocas, {$push: [voca]})
-    //console.log(vocas);
     this.setState({
       vocas: vocas.sort((a,b) => {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
         return 0;
       })
-        });
+    });
+  }
+
+  deleteVoca(voca) {
+    var vocaArray = this.state.vocas.sort((a,b) => {
+      if (a.id < b.id) return -1;
+      if (a.id > b.id) return 1;
+      return 0;
+    });
+    var vocaId = vocaArray.map((e) => e.id);
+    var vocaIndex = vocaId.indexOf(voca.id); 
+    var vocas = update(vocaArray, {$splice: [[vocaIndex, 1]]})
+    this.setState({
+      vocas: vocas.sort((a,b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      })
+    });
+  }
+
+  onSubmitDelete (id) {
+    var vocas = this.state.vocas;
+    var voca;
+    for (var i = 0;  i < vocas.length; i++) {
+      if ( vocas[i].id == id ) {
+        voca = vocas[i];
+        break;
+      }
+    }
+    $.ajax({
+      method: "DELETE",
+      url: `/vocas/${id}`,
+      voca: voca
+    })
+      .done((data) => {
+        this.deleteVoca(data);
+      })
   }
 
 
@@ -210,12 +247,13 @@ class Vocas extends React.Component {
                           if (voca.name[0].toLowerCase() === i) {
                             return (
                               <EachVoca
-                                key = {voca.id}
+                                id = {voca.id}
                                 name = {voca.name}
                                 japanese = {voca.japanese}
                                 q_artist = {voca.q_artist}
                                 q_track = {voca.q_track}
                                 q_lyric = {voca.q_lyric}
+                                onDelete = {this.onSubmitDelete}
                               />
                             );
                           }

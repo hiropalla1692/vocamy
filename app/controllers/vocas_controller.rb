@@ -15,11 +15,8 @@ class VocasController < ApplicationController
 
   def destroy
     @voca = Voca.find(params[:id])
-    if @voca.destroy
-      render json: @voca
-    else 
-      render json: @voca.errors, status: :unprocessable_entity
-    end
+    @voca.destroy
+    render json: @voca
   end
 
   def show

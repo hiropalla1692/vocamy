@@ -1,10 +1,21 @@
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
-<div>
-  Name: <%= @user.name %>
-</div>
-<div>
-  E-mail: <%= @user.email %><h4>hjiji</h4>
+<div class="usershow">
+  <div id="usershowtitle">
+    ACCOUNT info
+  </div>
+  <div id="usershowname">
+    <h1>
+      💫&nbsp;&nbsp;<%= @user.name %>
+    </h1>
+    <a>
+      <%= link_to "edit", edit_user_path(current_user) %>
+    <a>
+  </div>
+  <div id="usershowinfo">
+    <div>
+      🥑 <%= @vocas.length %> vocas
+    </div>
+    <div>
+      📩 <%= @user.email %>
+    </div>
+  </div>
 </div>

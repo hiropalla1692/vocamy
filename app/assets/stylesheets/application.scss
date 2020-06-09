@@ -188,3 +188,99 @@ body {
     border-bottom: 1px solid gray;
   }
 }
+
+.usershow {
+  display: flex;
+  flex-direction: column;
+  margin: 6%;
+  width: 50%;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  #usershowtitle {
+    font-family: 'Baloo', cursive;    
+  }
+
+  #usershowname {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    h1 {
+      margin-right: 5%;
+    }
+    a, a:visited {
+      text-decoration: none;
+      color: #0ecb27;
+      font-size: 18px;
+    }
+    a:hover {
+      color: pink;
+    }
+  }
+
+  #usershowinfo {
+    border-top: 2px solid gray;
+    padding: 4%;
+  }
+}
+
+/* Users edit */
+.useredit {
+  display: flex;
+  flex-direction: column;
+  margin: 6%;
+  width: 50%;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  #usereditname {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    h1 {
+      margin-right: 5%;
+    }
+  }
+
+  .usereditform {
+    border-top: 2px solid gray;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      margin: 6%;
+    }
+
+    input {
+      margin: 0;
+      padding: 1%;
+      border: none;
+      border-radius: 0;
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: transparent;
+      border-bottom: 1px solid gray;
+      transition: all 0.8s;
+    }
+
+    input:focus {
+      border-bottom: 1px solid #0ecb27;
+    }
+
+    #button {
+      input {
+        padding: 3%;
+        border: 1px solid #0ecb27;
+        color: #0ecb27;
+        transition: all 0.4s;
+      }
+      :hover {
+        background-color: #0ecb27;
+        color: white;
+      }
+    }
+  }
+  #useredittitle {
+    font-family: 'Baloo', cursive;    
+  }
+}
