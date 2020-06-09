@@ -8,7 +8,7 @@
   Vocamy🥑
 </h1>
 
-## [Vocamy🥑](http://covid-19-visualizer.surge.sh/)
+## [Vocamy🥑](https://stark-inlet-32487.herokuapp.com/)
 ### MusixmatchのAPIから曲の歌詞情報を取得し、歌詞の中の覚えたい単語を登録してオリジナル単語帳を作成するアプリ
 
 ## 🌞 実装機能

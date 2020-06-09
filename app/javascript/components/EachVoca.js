@@ -117,7 +117,7 @@ const EachVoca = (props) => {
         <StyledForm>
           <Input type='checkbox' id={props.name}></Input>
           <Accshow>
-            <span>👉&nbsp;{props.q_lyric}</span>&nbsp;&nbsp;<br></br>
+            <span>👉&nbsp;{props.q_lyric}</span><br></br>
             <Button onClick={()=>{handleDelete(props.id)}}>delete</Button>
           </Accshow>
         </StyledForm>
