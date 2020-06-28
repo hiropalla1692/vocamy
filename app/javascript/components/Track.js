@@ -7,14 +7,14 @@ const Button = styled.p`
   border-radius: 1px;
   padding: 0 0;
   width: 8rem;
-  background: transparent;
-  color: #0ecb27;
+  background: #f8f4e6;
+  color: black;
   text-align: center;
-  border: 1px solid #0ecb27;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
   &:hover{
-    transition: 0.2s all ease-in-out;
-    background: #0ecb27;
-    color: white;
+    transition: 0.1s all ease-in-out;
+    color: #c1b1cf;
   }
   &:focus{
     outline: 0;
@@ -25,12 +25,12 @@ const TrackInformation = styled.div`
   justify-content: space-around;
   flex: 0 1 30%;
   border-radius: 1px;
-  padding: 0rem 1.0rem;
-  margin: 0.25rem 0.25rem;
-  border: 2px solid;
+  background-color: #f8f4e6;
+  padding: 0rem 1rem;
+  margin: 0.3rem 0.25rem;
   text-align: center;
   word-break: break-all;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Jost', sans-serif;
 `
 
 const InformationBox = styled.div`
@@ -74,7 +74,7 @@ const Track = (props) => {
       </InformationBox>
       <InformationBox link>
         <Link to={`lyrics/track/${track.track_id}`}>
-          <Button>&nbsp;&nbsp;>>View Lyrics 👑</Button>
+          <Button>▷ View Lyrics </Button>
         </Link>
       </InformationBox>
     </TrackInformation>

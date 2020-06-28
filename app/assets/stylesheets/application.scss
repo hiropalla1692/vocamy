@@ -17,10 +17,23 @@
  $color-main: #311B3A;
  $color-sub: #A79EAC;
  $color-word: #444A57;
+ $blue: #cbe3df;
 
 body {
   margin: 0;
-  background-color: rgb(255, 255, 255)
+  background-color: $blue;
+  background-image:
+    linear-gradient(
+      transparent 98%,
+      #f8f4e6 2%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 98%,
+      #f8f4e6 2%
+    );
+  background-size: 40px 40px;
+  background-repeat: repeat;
 }
 .content {
   padding: 1rem 2.5rem;
@@ -34,17 +47,18 @@ body {
   display: flex;
   justify-content: center; 
   position: relative;
+  margin-top: 36px;
   height:48px;
   align-items: center;
-  font-family: 'Baloo', cursive;
-  background-color: $color-main;
+  font-family: 'DM Serif Display', serif;
+  background-color: transparent;
 
   .logo_container {
     text-align: center;
     font-family: 'Pacifico', cursive;
-    font-size: 24px;
+    font-size: 32px;
       a, a:visited {
-        color: white;
+        color: black;
         text-decoration: none;
       }
   }
@@ -59,8 +73,8 @@ body {
       padding: 0;
     }
     a, a:visited {
-      color: white;
-      font-size: 14px;
+      color: black;
+      font-size: 20px;
       text-decoration: none;
       text-align: center;
     }
@@ -75,20 +89,20 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 13px;
-  background-color: $color-sub;
+  font-family: 'DM Serif Display', serif;
+  font-size: 14px;
+  background-color: transparent;
 
   .navbar_menu {
     flex-basis: 100%;
     text-align: center;
-    font-size: 14px;
+    font-size: 10px;
   }
   a, a:visited {
     color: black;
     text-decoration: none;
     &:hover {
-      color: pink;
+      color: #c1b1cf;
     }
 
   }
@@ -106,8 +120,8 @@ body {
   justify-content: space-around;
   height: 300px;
   padding: 30px, 70px;
-  font-family: 'Baloo', cursive;
-  background-color: $color-main;
+  font-family: 'DM Serif Display', serif;
+  background-color: transparent;
 
   .container {
     flex-basis: 60%;
@@ -116,7 +130,7 @@ body {
     font-family: 'Pacifico', cursive;
     font-size: 32px;
       a, a:visited {
-        color: white;
+        color: black;
         text-decoration: none;
       }
   }
@@ -124,17 +138,17 @@ body {
   .footer_content {
     display: flex;
     flex-direction: row wrap;
-    font-family: 'Karla', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 14px;
     text-align: left;
     ul {
       list-style: none;
-      color: white;
+      color: black;
       li {
         margin-bottom: 10px;
       }
       a, a:visited {
-        color: white;
+        color: black;
         text-decoration: none;
       }
     }
@@ -152,11 +166,11 @@ body {
     }
 
     .big {
-      font-family: 'Baloo', cursive;
+      font-family: 'Jost', sans-serif;
       font-size: 24px
     }
     .small {
-      font-family: 'Karla', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-size: 13px
     }
 
@@ -168,9 +182,9 @@ body {
   height: 30px;
   padding: 20px 30px;
   flex-direction: row wrap;
-  background-color: $color-main;
-  color: white;
-  font-family: 'Karla', sans-serif;
+  background-color: transparent;
+  color: black;
+  font-family: 'Jost', sans-serif;
   font-size: 14px;
   > div {
     margin: 0px 40px;

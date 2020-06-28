@@ -7,12 +7,13 @@ const StyledForm = styled.div`
   display: flex;
   justify-content: left;
   align-items: center;
+  font-family: 'Jost', sans-serif;
 `
 
 const Name = styled.span`
   text-align: left;
   font-size: 16px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Jost', sans-serif;
     a {
       color: black;
       text-decoration: none;
@@ -28,7 +29,7 @@ const Japanese = styled.span`
 const Quote　= styled.span`
   text-align: left;
   font-size: 11px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Jost', sans-serif;
   a {
       color: black;
       text-decoration: none;
@@ -41,7 +42,7 @@ const Accshow = styled.div`
   margin: 0;
   opacity: 0;
   transition: 0.2s;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-style: italic;
   font-size: 14px;
   color: gray;
@@ -60,7 +61,7 @@ const Label = styled.label`
   display: block;
   margin: 1px 0;
   padding : 2px 2px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Jost', sans-serif;
   background : transparent;
   cursor :pointer;
   transition: all 0.3s;
@@ -76,7 +77,7 @@ const Button = styled.button`
   background: transparent;
   color: #0ecb27;
   border: 1px solid #0ecb27;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Jost', sans-serif;
   font-size: 15px;
   &:hover{
     transition: 0.2s all ease-in-out;

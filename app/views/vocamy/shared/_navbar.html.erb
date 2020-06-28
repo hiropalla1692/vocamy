@@ -1,7 +1,7 @@
 <!-- NAVBAR -->
 <% if logged_in? %>
   <div class="navbar">
-    <h3>Hi, <%= link_to user.name, current_user %>&nbsp;!&nbsp;&nbsp;&nbsp;</h3>
+    <h3>Hey, <%= link_to user.name, current_user %>&nbsp;!&nbsp;&nbsp;&nbsp;</h3>
     <h3>Now you got <strong><%= vocas.length %></strong> VOCAs.</h3>
   </div>
 <% else %>

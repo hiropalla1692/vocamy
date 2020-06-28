@@ -20,15 +20,48 @@ const VocaList = styled.div`
 const ToggleBar = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  text-align: center;
-  margin: 5% 5% 5% 5% !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  p {
+  text-align: left;
+  font-family: 'Jost', sans-serif;
+
+  div {
+    margin: 0% 2%;
+  }
+
+  label {
+    width: 60px;
+    height: 30px;
+    background: #bcb0cd;
     position: relative;
-    top: 25%;
-    text-align: center;
-    margin: 20px 20px 20px 20px;
+    display: inline-block;
+    border-radius: 46px;
+    transition: 0.4s;
+    box-sizing: border-box;
+    &:after { // ○ のスタイル
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      left: 0;
+      top: 0;
+      z-index: 2;
+      background: #f8f4e6;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+  }
+
+  input {
+    display: none;
+    :checked {
+      +label{
+        background-color: #e3d1cf;
+        &:after{
+          left: 30px;
+        }
+      }
+    }
   }
 `
 const Button = styled.button`
@@ -56,18 +89,19 @@ const Button = styled.button`
 
 const VocaSearch = styled.div`
   writing-mode: tb-rl;
-  color: #0ecb27;
-  font-family: 'Baloo', cursive;
+  color: black;
+  font-family: 'DM Serif Display', serif;
   text-align: center;
-  border-radius: 12px;
-  border: 2px solid #0ecb27;
-  height: 450px;
+  border-radius: 15px;
+  background-color: #ead2cf;
+  border: 2px solid black;
+  height: 540px;
   margin: 30px 45px;
   position: -webkit-sticky;
   position: sticky;
   top: 50px;
   a {
-      color: #0ecb27;
+      color: black;
       text-decoration: none;
       &:hover {
         color: pink;
@@ -79,7 +113,7 @@ class Vocas extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAdd: 'true',
+      isAdd: true,
       vocas: this.props.vocas,
       user: this.props.user,
       text: null,
@@ -95,8 +129,6 @@ class Vocas extends React.Component {
     this.deleteVoca = this.deleteVoca.bind(this);
     this.fillInWord = this.fillInWord.bind(this);
     this.quoteInfoGet= this.quoteInfoGet.bind(this);
-    this.setIsAddTrue= this.setIsAddTrue.bind(this);
-    this.setIsAddFalse= this.setIsAddFalse.bind(this);
     this.onSubmitDelete = this.onSubmitDelete.bind(this);
   }
 
@@ -183,30 +215,32 @@ class Vocas extends React.Component {
     })
   };
 
-  setIsAddTrue = () => {
+  toggleToLook = () => {
     this.setState(() => ({
-      isAdd: 'true'
+      isAdd: false
+    }))
+  };
+  
+  toggleToAdd= () => {
+    this.setState(() => ({
+      isAdd: true
     }))
   };
 
-  setIsAddFalse = () => {
-    this.setState(() => ({
-      isAdd: 'false'
-    }))
-  };
 
   render() {
-    var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var alphabets = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     return (
       <Provider>
         <Container>
-          {this.state.isAdd === 'true'
+          {this.state.isAdd
           ? (
             <div>
               <ToggleBar>
-                  <Button set onClick={this.setIsAddTrue}>Add🥑</Button>
-                  <div><p>Check out your VOCAS →</p></div>
-                  <Button onClick={this.setIsAddFalse}>Look🥑</Button>
+                <div>Collect</div>
+                <input id="toggle" type='checkbox' onClick={this.toggleToLook}/>
+                <label for="toggle"/>
+                <div>View</div>
               </ToggleBar>
               <InputForm
                 input_name = {this.state.input_name}
@@ -221,9 +255,10 @@ class Vocas extends React.Component {
           : (
             <div>
               <ToggleBar>
-                <Button onClick={this.setIsAddTrue} >Add🥑</Button>
-                <div><p>← Let's add new VOCA</p></div>
-                <Button set onClick={this.setIsAddFalse} >Look🥑</Button>
+                <div>Collect</div>
+                <input id="toggle" type='checkbox' onClick={this.toggleToAdd}/>
+                <label for="toggle"/>
+                <div>View</div>
               </ToggleBar>
               <VocaList>
                 <Router>
@@ -231,7 +266,7 @@ class Vocas extends React.Component {
                   {alphabets.map((i) => {
                     return (
                       <HashLink smooth to={`#${i}`}>
-                        {i.toUpperCase()}&nbsp;&nbsp;
+                        {i.toUpperCase()}&nbsp;&nbsp;&nbsp;
                       </HashLink>
                     );
                   })};

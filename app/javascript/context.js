@@ -19,7 +19,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     track_list: [],
-    heading: 'LATEST TOP 10 TRACKS👶',
+    heading: 'LATEST TOP 10 TRACKS',
     dispatch: action => this.setState(state => reducer(state, action))
   };
 

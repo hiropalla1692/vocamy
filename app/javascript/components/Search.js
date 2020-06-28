@@ -9,15 +9,15 @@ const Button = styled.button`
   padding: 0.5rem 0;
   margin: 0.5rem 0.5rem;
   width: 6rem;
-  background: transparent;
-  color: #0ecb27;
-  border: 1px solid #0ecb27;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Jost', sans-serif;
+  background: black;
+  color: white;
+  border: 1px solid black;
   font-size: 15px;
   &:hover{
     transition: 0.2s all ease-in-out;
-    background: #0ecb27;
-    color: white;
+    background-color: #ebd3c0;
+    color: black;
   }
   &:focus{
     outline: 0;
@@ -29,20 +29,20 @@ const Input = styled.input`
   -moz-appearance: none;
   appearance: none;
   border-radius: 1px;
+  font-family: 'Jost', sans-serif;
   padding: 0.5rem 0.25rem;
   margin: 0.5rem 0;
   width: 18rem;
   color: black;
   font-size: 15px;
-  border: 1px solid black;
-  font-family: 'Source Sans Pro', sans-serif;
+  border: 0px;
   ::placeholder{
   color: black;
   }
 
   &:focus{
     outline: 0;
-    border: 1px solid #0ecb27;
+    border: 1px solid #ebd3c0;
     ::placeholder{
       color: gray;
     }
@@ -55,7 +55,6 @@ const Container = styled.div`
   border-radius: 1px; 
   border-color: black;
   padding: 0rem 15px;
-  font-family: 'Source Sans Pro', sans-serif;
 `
 
 class Search extends Component {

@@ -5,17 +5,21 @@ import styled, {css} from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Title = styled.h1`
-  color: white;
   border-radius: 2px;
   padding: 1rem 1rem;
-  background-color: black;
+  background-color: #f8f4e6;
+  font-family: 'DM Serif Display', serif;
+`
+const Lyric = styled.h4`
+  margin: 2% 4%;
 `
 
 const SingleWord = styled.span`
   text-decoration: none;
+  font-family: 'Jost', sans-serif;
   color: black;
     :hover {
-      color: #9ca5eb;
+      color: #c1b1cf;
     }
 `
 
@@ -87,7 +91,7 @@ class LyricsContent extends React.Component {
             <Title>
               {track.track_name} <br></br><small>by <span>{track.artist_name}</span></small> 
             </Title>
-            <h4>
+            <Lyric>
               {lyricsBox.map((value) => {
                  var word = value.map( (each) => {
                    if (each === value[(value.length)-1]) {
@@ -98,7 +102,7 @@ class LyricsContent extends React.Component {
                  })
                  return word
               })}
-            </h4>
+            </Lyric>
             {console.log(lyricsBox)}
           </div>
         </React.Fragment>

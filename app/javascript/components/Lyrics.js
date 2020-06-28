@@ -8,10 +8,12 @@ const Container = styled.div`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
+  font-family: 'Jost', sans-serif;
 `
 const Bigtext = styled.h1`
   display: block;
-  font-size: 2em;
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
   margin-block-start: 0.2em;
   margin-block-end: 0.2em;
   margin-inline-start: 0px;
@@ -20,7 +22,8 @@ const Bigtext = styled.h1`
 `
 const Smalltext = styled.h4`
   display: block;
-  color: #0ecb27;
+  font-family: 'Jost', sans-serif;
+  font-size: 17.5px;
   margin-block-start: 0em;
   margin-block-end: 2em;
   margin-inline-start: 0px;
@@ -39,7 +42,7 @@ class Lyrics extends React.Component {
               return (
                 <div>
                   <Bigtext>{heading}</Bigtext>
-                  <Smalltext>Check out lyrics from your favorit songs and expand your vocabulary</Smalltext>
+                  <Smalltext>Check out lyrics from your favorite songs and expand your vocabulary</Smalltext>
                   <Container>
                     {track_list.map( (item, index) => (
                       <Track 
