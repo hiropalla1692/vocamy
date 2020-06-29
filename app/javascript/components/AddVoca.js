@@ -104,7 +104,7 @@ class AddVoca extends React.Component {
   }
 
   handleSubmit(e) {
-    let returnButtonText = () => document.getElementById("addvoca").innerHTML="+&nbsp;&nbsp;Voca🥑";
+    let returnButtonText = () => document.getElementById("addvoca").innerHTML="+&nbsp;Voca";
     e.preventDefault();
     document.getElementById("addvoca").innerHTML="Done!";
     this.props.onFormSubmit();

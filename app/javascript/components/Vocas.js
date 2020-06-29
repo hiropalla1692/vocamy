@@ -5,7 +5,7 @@ import AlphabetBox from './AlphabetBox'
 import EachVoca from './EachVoca'
 import { Provider } from '../context';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import {HashLink} from 'react-router-hash-link';
+import { HashLink } from 'react-router-hash-link';
 import update from 'immutability-helper';
 
 const Container = styled.div`
@@ -121,6 +121,7 @@ class Vocas extends React.Component {
       input_japanese: '',
       input_q_artist: '',
       input_q_track: '',
+      input_q_track_id: '',
       input_q_lyric: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -142,9 +143,11 @@ class Vocas extends React.Component {
       japanese: this.state.input_japanese,
       q_artist: this.state.input_q_artist,
       q_track: this.state.input_q_track,
+      q_track_id: this.state.input_q_track_id.toString(10),
       q_lyric: this.state.input_q_lyric,
       user_id: this.state.user.id,
     }
+    console.log(voca.q_track_id);
     $.post('/vocas',{voca: voca})
       .done((data) => {
         this.addNewVoca(data);
@@ -209,6 +212,7 @@ class Vocas extends React.Component {
 
   quoteInfoGet = (quote) => {
     this.setState({
+      input_q_track_id: quote[0].track_id,
       input_q_track: quote[0].track_name,
       input_q_artist: quote[0].artist_name,
       input_q_lyric: quote[1]
@@ -287,6 +291,7 @@ class Vocas extends React.Component {
                                 japanese = {voca.japanese}
                                 q_artist = {voca.q_artist}
                                 q_track = {voca.q_track}
+                                q_track_id = {voca.q_track_id}
                                 q_lyric = {voca.q_lyric}
                                 onDelete = {this.onSubmitDelete}
                               />

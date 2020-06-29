@@ -62,8 +62,9 @@ class LyricsContent extends React.Component {
         return axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`);
       })
       .then(res => {
-        //console.log(res.data)
+        console.log(res.data)
         this.setState({ track: res.data.message.body.track });
+        //console.log(this.state.track)
       })
       .catch(err => console.log(err));
   }
@@ -103,7 +104,6 @@ class LyricsContent extends React.Component {
                  return word
               })}
             </Lyric>
-            {console.log(lyricsBox)}
           </div>
         </React.Fragment>
       )

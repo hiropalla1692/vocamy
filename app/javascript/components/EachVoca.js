@@ -37,6 +37,8 @@ const Quote　= styled.span`
 `
 
 const Accshow = styled.div`
+  display: flex;
+  align-items: center;
   height: 0;
   padding: 0;
   margin: 0;
@@ -45,8 +47,15 @@ const Accshow = styled.div`
   font-family: 'Jost', sans-serif;
   font-style: italic;
   font-size: 14px;
-  color: gray;
-
+  color: black;
+  span {
+    margin-right: 0.5em;
+    padding: 1% 1%;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #f8f4e6;
+    box-shadow: 4px 4px #c1b1cf;
+  }
 `
 
 const Input = styled.input`
@@ -66,26 +75,33 @@ const Label = styled.label`
   cursor :pointer;
   transition: all 0.3s;
   &:hover {
-    color : #0ecb27;
+    color: #c1b1cf;
 }
 `
 const Button = styled.button`
   display: inline-block;
-  border-radius: 1px;
-  padding: 0.5rem 0.5rem;
-  margin: 1rem 1rem;
-  background: transparent;
-  color: #0ecb27;
-  border: 1px solid #0ecb27;
+  border-radius: 15px;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.5rem;
   font-family: 'Jost', sans-serif;
   font-size: 15px;
+  background: black;
+  color: white;
+  border: 1px solid black;
   &:hover{
     transition: 0.2s all ease-in-out;
-    background: #0ecb27;
-    color: white;
+    background-color: #ebd3c0;
+    color: black;
   }
   &:focus{
     outline: 0;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    :hover {
+      color: black;
+    }
   }
 `
 
@@ -118,8 +134,9 @@ const EachVoca = (props) => {
         <StyledForm>
           <Input type='checkbox' id={props.name}></Input>
           <Accshow>
-            <span>👉&nbsp;{props.q_lyric}</span><br></br>
-            <Button onClick={()=>{handleDelete(props.id)}}>delete</Button>
+            <span>&nbsp;&nbsp;♬&nbsp;&nbsp;{props.q_lyric}&nbsp;&nbsp;</span><br></br>
+            <Button onClick={()=>{handleDelete(props.id)}}>Delete</Button>
+            <Button> <a href={`http://localhost:3000/lyrics/track/${props.q_track_id}`}>View Full Lyrics of The Song</a></Button>
           </Accshow>
         </StyledForm>
       </React.Fragment>

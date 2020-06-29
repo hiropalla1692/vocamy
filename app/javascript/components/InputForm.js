@@ -35,8 +35,8 @@ const StyledForm = styled.div`
 class InputForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
+      track_id: "",
       track_name: "",
       artist_name: "",
       quote_lyrics: ""
@@ -57,6 +57,7 @@ class InputForm extends React.Component {
   quoteInfoGet = (quote) => {
     this.props.quoteInfoGet(quote);
     this.setState({
+      track_id: quote[0].track_id,
       track_name: quote[0].track_name,
       artist_name: quote[0].artist_name,
       quote_lyrics: quote[1]
