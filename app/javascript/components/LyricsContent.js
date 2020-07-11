@@ -56,8 +56,6 @@ class LyricsContent extends React.Component {
   }
 
   componentDidMount() {
-    console.log(gon.authorization);
-
     axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`)
       .then(res => {
         this.setState({ lyrics: res.data.message.body.lyrics });

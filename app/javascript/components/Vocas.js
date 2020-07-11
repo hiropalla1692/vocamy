@@ -225,7 +225,14 @@ class Vocas extends React.Component {
     }))
   };
   
-  toggleToAdd= () => {
+  toggleToAdd = () => {
+    this.setState(() => ({
+      isAdd: true
+    }))
+  };
+
+  toggleToAdd2 = () => {
+    document.getElementById("toggle").checked = false;
     this.setState(() => ({
       isAdd: true
     }))
@@ -266,41 +273,44 @@ class Vocas extends React.Component {
               </ToggleBar>
               <VocaList>
                 <Router>
-                <VocaSearch>
-                  {alphabets.map((i) => {
-                    return (
-                      <HashLink smooth to={`#${i}`}>
-                        {i.toUpperCase()}&nbsp;&nbsp;&nbsp;
-                      </HashLink>
-                    );
-                  })};
-                </VocaSearch>
-                <div>
-                  {alphabets.map((i) => {
-                    return (
-                      <div>
-                        <AlphabetBox
-                          alp = {i.toUpperCase()}
-                        />
-                        {this.state.vocas.map ((voca) => {
-                          if (voca.name[0].toLowerCase() === i) {
-                            return (
-                              <EachVoca
-                                id = {voca.id}
-                                name = {voca.name}
-                                japanese = {voca.japanese}
-                                q_artist = {voca.q_artist}
-                                q_track = {voca.q_track}
-                                q_track_id = {voca.q_track_id}
-                                q_lyric = {voca.q_lyric}
-                                onDelete = {this.onSubmitDelete}
-                              />
-                            );
-                          }
-                        })}
-                      </div>
-                  );})}
-                </div>
+                  <VocaSearch>
+                    {alphabets.map((i) => {
+                      return (
+                        <HashLink smooth to={`#${i}`}>
+                          {i.toUpperCase()}&nbsp;&nbsp;&nbsp;
+                        </HashLink>
+                      );
+                    })};
+                  </VocaSearch>
+                  <div>
+                    {alphabets.map((i) => {
+                      return (
+                        <div>
+                          <AlphabetBox
+                            alp = {i.toUpperCase()}
+                          />
+                          {this.state.vocas.map ((voca) => {
+                            if (voca.name[0].toLowerCase() === i) {
+                              return (
+                                <div>
+                                  <EachVoca
+                                    id = {voca.id}
+                                    name = {voca.name}
+                                    japanese = {voca.japanese}
+                                    q_artist = {voca.q_artist}
+                                    q_track = {voca.q_track}
+                                    q_track_id = {voca.q_track_id}
+                                    q_lyric = {voca.q_lyric}
+                                    onDelete = {this.onSubmitDelete}
+                                    toggleToAdd = {this.toggleToAdd2}
+                                  />
+                                </div>
+                              );
+                            }
+                          })}
+                        </div>
+                    );})}
+                  </div>
                 </Router>
               </VocaList>
             </div>

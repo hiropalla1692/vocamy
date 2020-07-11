@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
+
 
 const StyledForm = styled.div`
   margin: 12px;
@@ -106,12 +108,15 @@ const Button = styled.button`
 `
 
 
-
 const EachVoca = (props) => {
   
   const handleDelete = (id) => {
     console.log(id)
     props.onDelete(id);
+  }
+
+  const toggleToAdd = () => {
+    props.toggleToAdd();
   }
 
   if (props.q_artist === null) {
@@ -136,7 +141,7 @@ const EachVoca = (props) => {
           <Accshow>
             <span>&nbsp;&nbsp;♬&nbsp;&nbsp;{props.q_lyric}&nbsp;&nbsp;</span><br></br>
             <Button onClick={()=>{handleDelete(props.id)}}>Delete</Button>
-            <Button> <a href={`http://localhost:3000/lyrics/track/${props.q_track_id}`}>View Full Lyrics of The Song</a></Button>
+              <Button onClick={()=>{toggleToAdd()}} ><a href={`https://stark-inlet-32487.herokuapp.com/lyrics/track/${props.q_track_id}`}>View Full Lyrics of The Song</a></Button>
           </Accshow>
         </StyledForm>
       </React.Fragment>
