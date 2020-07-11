@@ -66,6 +66,7 @@ class LyricsContent extends React.Component {
 
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `${gon.authorization}`);
+        console.log(gon.authorization);
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     
         var urlencoded = new URLSearchParams();
