@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = current_user
     @vocas = current_user.vocas.order(:name)
     @voca = Voca.new
+    gon.authorization = ENV['SPOTIFY_AUTH'];
   end
 
   def show

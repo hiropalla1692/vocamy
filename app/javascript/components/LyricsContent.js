@@ -28,7 +28,8 @@ class LyricsContent extends React.Component {
     super(props);
     this.state = {
       track: {},
-      lyrics: {}
+      lyrics: {},
+      track_id_spotify: ""
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -55,19 +56,54 @@ class LyricsContent extends React.Component {
   }
 
   componentDidMount() {
+    console.log(gon.authorization);
+
     axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`)
       .then(res => {
-        //console.log(res.data)
         this.setState({ lyrics: res.data.message.body.lyrics });
         return axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${this.props.match.params.id}&apikey=cd969a404a655f1f226f121214a1dbad`);
       })
       .then(res => {
-        console.log(res.data)
         this.setState({ track: res.data.message.body.track });
-        //console.log(this.state.track)
+
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", `${gon.authorization}`);
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("grant_type", "client_credentials");
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: urlencoded,
+          redirect: 'follow'
+        };
+        return fetch("https://accounts.spotify.com/api/token", requestOptions);
       })
-      .catch(err => console.log(err));
+      .then(response => response.text())
+      .then(result => JSON.parse(result))
+      .then(result => {
+        var accessToken = result.access_token
+        var myHeaders2 = new Headers();
+        myHeaders2.append("Authorization", `Bearer ${accessToken}`);
+        var requestOptions = {
+          method: 'GET',
+          headers: myHeaders2,
+          redirect: 'follow'
+        };
+        var trackName = this.state.track.track_name.replace( ' ', '%20' )
+        var artistName = this.state.track.artist_name.replace( ' ', '%20' )
+        return fetch(`https://api.spotify.com/v1/search?q=track:${trackName}%20artist:${artistName}&type=track`, requestOptions)
+      })
+      .then(response => response.text())
+      .then(result => JSON.parse(result))
+      .then(result => {
+        this.setState({ track_id_spotify: result.tracks.items[0].id });
+      })
+      .catch(error => console.log('error', error));
   }
+
   
   render() {
     const { track, lyrics } = this.state;
@@ -92,6 +128,9 @@ class LyricsContent extends React.Component {
             <Title>
               {track.track_name} <br></br><small>by <span>{track.artist_name}</span></small> 
             </Title>
+            <div>
+              <iframe src={`https://open.spotify.com/embed/track/${this.state.track_id_spotify}`} width="400" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
             <Lyric>
               {lyricsBox.map((value) => {
                  var word = value.map( (each) => {
