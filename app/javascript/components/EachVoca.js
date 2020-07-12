@@ -141,7 +141,7 @@ const EachVoca = (props) => {
           <Accshow>
             <span>&nbsp;&nbsp;♬&nbsp;&nbsp;{props.q_lyric}&nbsp;&nbsp;</span><br></br>
             <Button onClick={()=>{handleDelete(props.id)}}>Delete</Button>
-              <Button onClick={()=>{toggleToAdd()}} ><a href={`https://stark-inlet-32487.herokuapp.com/lyrics/track/${props.q_track_id}`}>View Full Lyrics of The Song</a></Button>
+              <Button onClick={()=>{toggleToAdd()}} ><a href={`https://www.vocamy.xyz/lyrics/track/${props.q_track_id}`}>View Full Lyrics of The Song</a></Button>
           </Accshow>
         </StyledForm>
       </React.Fragment>
