@@ -1,7 +1,8 @@
 
 <p align="center">
   <a href="">
-    <img alt="Vocamy" src="./app/assets/images/vocamy.gif" width="480" />
+    <img alt="Vocamy" src="./app/assets/images/vocamy_1.gif" width="480" />
+    <img alt="Vocamy" src="./app/assets/images/vocamy_2.gif" width="480" />
   </a>
 </p>
 <h1 align="center">
