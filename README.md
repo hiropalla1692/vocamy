@@ -1,20 +1,21 @@
 
 <p align="center">
   <a href="">
-    <img alt="Vocamy" src="./app/assets/images/vocamy_screenshot.png" width="400" />
+    <img alt="Vocamy" src="./app/assets/images/vocamy.gif" width="480" />
   </a>
 </p>
 <h1 align="center">
   Vocamy🥑
 </h1>
 
-## [Vocamy🥑](https://stark-inlet-32487.herokuapp.com/)
+## [Vocamy🥑](https://www.vocamy.xyz/)
 ### MusixmatchのAPIから曲の歌詞情報を取得し、歌詞の中の覚えたい単語を登録してオリジナル単語帳を作成するアプリ
 
 ## 🌞 実装機能
 ### 英単語関連
 - Musixmatch APIからの情報を表示
 - Musixmatch APIからの情報(引用元アーティスト名、曲名、単語)を登録
+- Spotify APIから検索した曲のプレイヤーを表示
 - アルファベットごとに一覧表示
 - 詳細表示 (引用曲の一節を表示)
 - 削除
