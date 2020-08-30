@@ -1,3 +1,90 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 6%;
+  width: 80%;
+  font-family: 'Jost', sans-serif;
+
+  .login {
+    flex-basis: 70%;
+    background: #faf4e6;
+    padding: 20px 50px 50px;
+    border-radius: 15px;
+    color: #31302c;
+    border: 2px solid #31302c;
+    box-shadow: 5px 5px;
+
+    h1 {
+      font-family: 'DM Serif';
+      margin: 10px;
+    }
+    h4 {
+      margin: 10px;
+    }
+    .input {
+      font-family: 'Jost', sans-serif;
+      background: #ebd3d0;
+      padding: 3% 3%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    
+        div {
+          margin: 3%;
+        }
+
+        .input_form {
+          text-align: center;
+          .input_box {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            outline: none;
+            margin: 0;
+            padding: 2%;
+            background-color: white;
+            outline: none;
+            box-shadow: none;
+            transition: all 0.8s;
+            :focus {
+              border: 2px solid #31302c;
+            }
+          }
+        }
+    }
+    .other {
+      background: #ebd3d0;
+      font-family: 'Jost', sans-serif;
+      padding: 3% 3%;
+      .button {
+        input {
+          width: 100px;
+          padding: 1%;
+          background-color: #31302c;
+          color: white;
+          transition: all 0.2s;
+        }
+        :hover {
+          background-color: #ebd3d0;
+          color: #31302c;
+        }
+      }
+    }
+  }
+
+  .sampleid {
+    margin-left: 5%;
+    flex-basis: 30%;
+    padding: 3% 3%;
+    background: #ebd3d0;
+    color: #31302c;
+    border: 2px solid #31302c;
+    box-shadow: 5px 5px;
+  }
+}
