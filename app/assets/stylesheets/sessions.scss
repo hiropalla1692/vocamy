@@ -26,6 +26,7 @@
     h4 {
       margin: 10px;
     }
+
     .input {
       font-family: 'Jost', sans-serif;
       background: #ebd3d0;
@@ -40,6 +41,11 @@
 
         .input_form {
           text-align: center;
+          label {
+            display: block;
+            float: left;
+            width: 10px;
+          }
           .input_box {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -79,6 +85,7 @@
   }
 
   .sampleid {
+    height: 30%;
     margin-left: 5%;
     flex-basis: 30%;
     padding: 3% 3%;
